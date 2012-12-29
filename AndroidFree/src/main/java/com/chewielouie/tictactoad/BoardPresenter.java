@@ -1,8 +1,8 @@
 package com.chewielouie.tictactoad;
 
 class BoardPresenter {
-    private BoardModel model;
-    private BoardView view;
+    private final BoardModel model;
+    private final BoardView view;
 
     public BoardPresenter( BoardModel m, BoardView v ) {
         this.model = m;

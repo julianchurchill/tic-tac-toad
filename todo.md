@@ -2,13 +2,13 @@ TODO
 ====
 
 - Follow MVC pattern, controller-first design. Minimise Android code, only refer from Android to Android-free.
-- Decide on a thin slice:
-    - Give the user some output before asking for input.
-    - ? Show the user an empty board, stating 'Your turn'.
 
 Backlog
 =======
 
-- Install Android SDK
-- Create standard project layout
+- Add unit test directories to project structure
+- Decide on a thin slice:
+    - Give the user some output before asking for input.
+    - ? Show the user an empty board, stating 'Your turn'.
+- Human vs human game - user should be able to make alternating moves for either side until the board is full
 

@@ -6,14 +6,13 @@ TODO
 Backlog
 =======
 
-- Decide on a thin slice:
-  - Give the user some output before asking for input.
-  - ? Show the user an empty board, stating 'Your turn'.
+... - Show the user an empty board, stating 'Your turn'.
 - Human vs human game - user should be able to make alternating moves for either side until the board is full
 
 - Tests
-  - How to handle BoardView::displayBoard( null )? Stop Model from returning a null for BoardModel::retrieveBoard() or catch it in BoardView?
-  - Implement BoardView interface in Android activity
+  - Implement BoardView interface in Android Activity
+      - How to handle BoardView::displayBoard( null )? Throw a runtime exception, i.e. ProgrammerMistake (see tddandroid.com)
+      - Extract Contract Tests for BoardView from tests for Activity
   - Implement basic BoardModel
   - Implement Board
 

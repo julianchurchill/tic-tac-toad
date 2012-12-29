@@ -89,24 +89,4 @@
     <!-- version-tag: 1 -->
     <import file="${sdk.dir}/tools/ant/build.xml" />
 
-    <property name="businesslogic.root" value="AndroidFree"/>
-    <property name="businesslogic.libs.test" value="${businesslogic.root}/libs/test"/>
-    <property name="businesslogic.src.test" value="${businesslogic.root}/src/test/java"/>
-    <property name="businesslogic.src.main" value="${businesslogic.root}/src/main/java"/>
-
-    <target name="unittest" description="Execute unit tests">
-        <junit printsummary="yes" haltonfailure="yes">
-            <classpath>
-                <pathelement location="${businesslogic.libs.test}/junit-4.11.jar"/>
-                <pathelement path="${java.class.path}"/>
-            </classpath>
-            <test name="my.test.TestCase"/>
-            <batchtest fork="yes">
-                <fileset dir="${businesslogic.src.test}">
-                    <include name="**/*.java"/>
-                </fileset>
-            </batchtest>
-        </junit>
-    </target>
-
 </project>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TicTacToad-custom-build-rules">
+
+    <property name="businesslogic.root" value="AndroidFree"/>
+    <import file="AndroidFree/build_rules.xml" />
+
+</project>

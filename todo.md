@@ -6,7 +6,6 @@ TODO
 Backlog
 =======
 
-- Add unit test directories to project structure
 - Decide on a thin slice:
     - Give the user some output before asking for input.
     - ? Show the user an empty board, stating 'Your turn'.

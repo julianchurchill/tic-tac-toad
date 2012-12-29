@@ -15,6 +15,8 @@
     </path>
     <path id="classpath.test">
         <pathelement location="${businesslogic.libs.test}/junit-4.11.jar"/>
+        <pathelement location="${businesslogic.libs.test}/jmock-2.6.0-RC2/jmock-2.6.0-RC2.jar"/>
+        <pathelement location="${businesslogic.libs.test}/jmock-2.6.0-RC2/jmock-junit4-2.6.0-RC2.jar"/>
         <pathelement path="${businesslogic.test.output}"/>
         <path refid="classpath.base"/>
     </path>
@@ -37,7 +39,7 @@
     </target>
 
 
-    <target name="compile-tests" description="Compile unit tests">
+    <target name="compile-tests" description="Compile unit tests" depends="compile-main">
         <mkdir dir="${businesslogic.test.output}"/>
         <javac srcdir="${businesslogic.src.test}"
                destdir="${businesslogic.test.output}"

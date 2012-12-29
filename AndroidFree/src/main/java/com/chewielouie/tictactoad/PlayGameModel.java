@@ -1,5 +1,5 @@
 package com.chewielouie.tictactoad;
 
-interface BoardModel {
+interface PlayGameModel {
     Board retrieveBoard();
 }

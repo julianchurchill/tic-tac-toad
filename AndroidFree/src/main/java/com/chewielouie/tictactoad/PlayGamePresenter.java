@@ -1,10 +1,10 @@
 package com.chewielouie.tictactoad;
 
-class BoardPresenter {
-    private final BoardModel model;
-    private final BoardView view;
+class PlayGamePresenter {
+    private final PlayGameModel model;
+    private final PlayGameView view;
 
-    public BoardPresenter( BoardModel m, BoardView v ) {
+    public PlayGamePresenter( PlayGameModel m, PlayGameView v ) {
         this.model = m;
         this.view = v;
     }

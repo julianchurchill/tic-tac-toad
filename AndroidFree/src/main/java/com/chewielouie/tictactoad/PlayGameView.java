@@ -1,5 +1,5 @@
 package com.chewielouie.tictactoad;
 
-interface BoardView {
+interface PlayGameView {
     void displayBoard( Board b );
 }

@@ -1,3 +1,5 @@
+package com.chewielouie.tictactoad;
+
 import static org.junit.Assert.*;
 
 import org.jmock.*;

@@ -1,0 +1,4 @@
+
+interface BoardModel {
+    Board retrieveBoard();
+}

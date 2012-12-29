@@ -59,7 +59,6 @@
     <target name="unittest" description="Execute unit tests" depends="compile-tests">
         <junit printsummary="yes" haltonfailure="yes">
             <classpath refid="classpath.test"/>
-            <test name="my.test.TestCase"/>
             <batchtest fork="yes">
                 <fileset dir="${businesslogic.src.test}">
                     <include name="**/*.java"/>

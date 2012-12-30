@@ -1,10 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="TicTacToad-custom-build-rules">
 
+    <property name="TALK" value="false"/>
+
     <property name="businesslogic.root" value="AndroidFree"/>
+    <property name="android.libs.test" value="libs/test"/>
+    <property name="android.src.test" value="src/test/java"/>
+    <property name="android.test.output" value="bin/classes/test"/>
+    <property name="android.main.output" value="bin/classes"/>
+
+    <path id="classpath.android.base">
+        <pathelement path="${java.class.path}"/>
+        <pathelement path="${android.main.output}"/>
+    </path>
+    <path id="classpath.android.test">
+        <pathelement location="${android.libs.test}/junit-4.11.jar"/>
+        <pathelement path="${android.test.output}"/>
+        <path refid="classpath.android.base"/>
+    </path>
+
     <import file="AndroidFree/build_rules.xml" />
 
     <target name="-pre-build" depends="all-businesslogic"/>
     <target name="-pre-clean" depends="clean-businesslogic"/>
+    <target name="-post-build" depends="android-unittest"/>
+
+    <target name="compile-android-tests" description="Compile the android specific unit tests">
+        <mkdir dir="${android.test.output}"/>
+        <javac srcdir="${android.src.test}"
+               destdir="${android.test.output}"
+               verbose="${TALK}"
+               includeantruntime="false">
+            <classpath refid="classpath.android.test"/>
+        </javac>
+    </target>
+
+    <target name="android-unittest" description="Execute the android specific unit tests" depends="compile-android-tests">
+        <junit printsummary="yes" haltonfailure="no" showoutput="yes" failureproperty="test.failure">
+            <formatter type="plain" usefile="false"/>
+            <classpath refid="classpath.android.test"/>
+            <batchtest fork="yes">
+                <fileset dir="${android.src.test}">
+                    <include name="**/*.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+        <fail if="test.failure"/>
+    </target>
 
 </project>

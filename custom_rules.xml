@@ -8,6 +8,7 @@
     <property name="android.src.test" value="src/test/java"/>
     <property name="android.test.output" value="bin/test/classes"/>
     <property name="android.main.output" value="${out.dir}/classes"/>
+    <property name="classpath.robolectric" value="${android.libs.test}/robolectric-2.0-20121220.000505-1-jar-with-dependencies.jar"/>
     <!-- Property from the android tools build file: -->
     <property name="android.project.classpath" value="project.target.class.path"/>
 
@@ -18,6 +19,7 @@
     <path id="classpath.android.test">
         <pathelement location="${android.libs.test}/junit-4.11.jar"/>
         <pathelement path="${android.test.output}"/>
+        <pathelement path="${classpath.robolectric}"/>
         <path refid="classpath.android.base"/>
     </path>
 

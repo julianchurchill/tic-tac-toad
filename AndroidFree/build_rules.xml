@@ -9,16 +9,16 @@
     <property name="businesslogic.test.output" value="${businesslogic.root}/bin/classes/test"/>
     <property name="businesslogic.main.output" value="${businesslogic.root}/bin/classes/main"/>
 
-    <path id="classpath.base">
+    <path id="classpath.businesslogic.base">
         <pathelement path="${java.class.path}"/>
         <pathelement path="${businesslogic.main.output}"/>
     </path>
-    <path id="classpath.test">
+    <path id="classpath.businesslogic.test">
         <pathelement location="${businesslogic.libs.test}/junit-4.11.jar"/>
         <pathelement location="${businesslogic.libs.test}/jmock-2.6.0-RC2/jmock-2.6.0-RC2.jar"/>
         <pathelement location="${businesslogic.libs.test}/jmock-2.6.0-RC2/jmock-junit4-2.6.0-RC2.jar"/>
         <pathelement path="${businesslogic.test.output}"/>
-        <path refid="classpath.base"/>
+        <path refid="classpath.businesslogic.base"/>
     </path>
 
     <target name="compile-main" description="Compile production code">
@@ -27,7 +27,7 @@
                destdir="${businesslogic.main.output}"
                verbose="${TALK}"
                includeantruntime="false">
-            <classpath refid="classpath.test"/>
+            <classpath refid="classpath.businesslogic.test"/>
         </javac>
     </target>
 
@@ -45,7 +45,7 @@
                destdir="${businesslogic.test.output}"
                verbose="${TALK}"
                includeantruntime="false">
-            <classpath refid="classpath.test"/>
+            <classpath refid="classpath.businesslogic.test"/>
         </javac>
     </target>
 
@@ -60,7 +60,7 @@
     <target name="unittest" description="Execute unit tests" depends="compile-tests">
         <junit printsummary="yes" haltonfailure="no" showoutput="yes" failureproperty="test.failure">
             <formatter type="plain" usefile="false"/>
-            <classpath refid="classpath.test"/>
+            <classpath refid="classpath.businesslogic.test"/>
             <batchtest fork="yes">
                 <fileset dir="${businesslogic.src.test}">
                     <include name="**/*.java"/>

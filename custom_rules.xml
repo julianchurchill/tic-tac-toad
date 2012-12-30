@@ -8,9 +8,10 @@
     <property name="android.src.test" value="src/test/java"/>
     <property name="android.test.output" value="bin/test/classes"/>
     <property name="android.main.output" value="${out.dir}/classes"/>
-    <property name="classpath.junit" value="${android.libs.test}/junit-4.11.jar"/>
+    <!-- Must use junit 4.10 because 4.11 does not work with robolectric -->
+    <property name="classpath.junit" value="${android.libs.test}/junit-4.10.jar"/>
+    <!--<property name="classpath.junit" value="${android.libs.test}/junit-4.11.jar"/>-->
     <property name="classpath.robolectric" value="${android.libs.test}/robolectric-1.2-20121214.235454-193-jar-with-dependencies.jar"/>
-    <!--<property name="classpath.robolectric" value="${android.libs.test}/robolectric-2.0-20121220.000505-1-jar-with-dependencies.jar"/>-->
     <!-- Property from the android tools build file for path to android java lib: -->
     <property name="android.project.classpath" value="project.target.class.path"/>
 

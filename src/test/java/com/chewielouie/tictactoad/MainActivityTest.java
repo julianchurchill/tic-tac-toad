@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
 
 public class MainActivityTest {
     @Test
-    public void testFail() {
-        fail("Fail!");
+    public void testReferencingAndroidClass() {
+        MainActivity m = new MainActivity();
     }
 }
 

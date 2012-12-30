@@ -8,6 +8,8 @@
     <property name="android.src.test" value="src/test/java"/>
     <property name="android.test.output" value="bin/classes/test"/>
     <property name="android.main.output" value="bin/classes"/>
+    <!-- Property from the android tools build file: -->
+    <property name="android.project.classpath" value="project.target.class.path"/>
 
     <path id="classpath.android.base">
         <pathelement path="${java.class.path}"/>
@@ -30,6 +32,7 @@
         <javac srcdir="${android.src.test}"
                destdir="${android.test.output}"
                verbose="${TALK}"
+               bootclasspathref="${android.project.classpath}"
                includeantruntime="false">
             <classpath refid="classpath.android.test"/>
         </javac>

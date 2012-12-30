@@ -6,8 +6,8 @@
     <property name="businesslogic.root" value="AndroidFree"/>
     <property name="android.libs.test" value="libs/test"/>
     <property name="android.src.test" value="src/test/java"/>
-    <property name="android.test.output" value="bin/classes/test"/>
-    <property name="android.main.output" value="bin/classes"/>
+    <property name="android.test.output" value="bin/test/classes"/>
+    <property name="android.main.output" value="${out.dir}/classes"/>
     <!-- Property from the android tools build file: -->
     <property name="android.project.classpath" value="project.target.class.path"/>
 

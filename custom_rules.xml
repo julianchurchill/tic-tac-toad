@@ -27,7 +27,7 @@
     <import file="AndroidFree/build_rules.xml" />
 
     <target name="-pre-build" depends="all-businesslogic"/>
-    <target name="-pre-clean" depends="clean-businesslogic"/>
+    <target name="-pre-clean" depends="clean-businesslogic,clean-compile-android-tests"/>
     <target name="-post-build" depends="android-unittest"/>
 
     <target name="compile-android-tests" description="Compile the android specific unit tests">
@@ -39,6 +39,14 @@
                includeantruntime="false">
             <classpath refid="classpath.android.test"/>
         </javac>
+    </target>
+
+    <target name="clean-compile-android-tests" description="Clean the compiled android unit tests">
+        <delete verbose="${TALK}">
+            <fileset dir="${android.test.output}">
+                <include name="**/*.class"/>
+            </fileset>
+        </delete>
     </target>
 
     <target name="android-unittest" description="Execute the android specific unit tests" depends="compile-android-tests">

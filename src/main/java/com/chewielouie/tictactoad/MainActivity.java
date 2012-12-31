@@ -2,6 +2,7 @@ package com.chewielouie.tictactoad;
 
 import android.app.Activity;
 import android.os.Bundle;
+import com.chewielouie.tictactoad.Board;
 
 public class MainActivity extends Activity
 {
@@ -11,5 +12,8 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+    }
+
+    public void displayBoard( Board b ) {
     }
 }

@@ -25,6 +25,8 @@
         <pathelement path="${classpath.robolectric}"/>
         <path refid="classpath.android.base"/>
         <path refid="${android.project.classpath}"/>
+        <!-- Google APIs maps.jar included to satisfy robolectrics Shadow bindings -->
+        <path location="${env.ANDROID_HOME}/add-ons/addon-google_apis-google-17/libs/maps.jar"/>
     </path>
 
     <import file="AndroidFree/build_rules.xml" />

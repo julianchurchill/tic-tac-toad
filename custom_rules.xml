@@ -4,6 +4,7 @@
     <property name="TALK" value="false"/>
 
     <property name="businesslogic.root" value="AndroidFree"/>
+    <property name="android.businesslogic.lib" value="${jar.libs.dir}/tictactoad.businesslogic.jar"/>
     <property name="android.libs.test" value="libs/test"/>
     <property name="android.src.test" value="src/test/java"/>
     <property name="android.test.output" value="bin/test/classes"/>
@@ -25,14 +26,18 @@
         <pathelement path="${classpath.junit}"/>
         <pathelement path="${android.test.output}"/>
         <pathelement path="${classpath.robolectric}"/>
-        <pathelement path="${businesslogic.main.output}"/>
+        <pathelement path="${android.businesslogic.lib}"/>
         <path refid="classpath.android.base"/>
         <path refid="${android.project.classpath}"/>
         <!-- Google APIs maps.jar included to satisfy robolectrics Shadow bindings -->
         <path location="${env.ANDROID_HOME}/add-ons/addon-google_apis-google-17/libs/maps.jar"/>
     </path>
 
-    <target name="-pre-build" depends="all-businesslogic"/>
+    <target name="-pre-build" depends="all-businesslogic">
+        <jar basedir="${businesslogic.main.output}"
+             destfile="${android.businesslogic.lib}"/>
+    </target>
+
     <target name="-pre-clean" depends="clean-businesslogic,clean-compile-android-tests"/>
     <target name="-post-build" depends="android-unittest"/>
 

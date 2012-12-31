@@ -15,6 +15,8 @@
     <!-- Property from the android tools build file for path to android java lib: -->
     <property name="android.project.classpath" value="project.target.class.path"/>
 
+    <import file="AndroidFree/build_rules.xml" />
+
     <path id="classpath.android.base">
         <pathelement path="${java.class.path}"/>
         <pathelement path="${android.main.output}"/>
@@ -23,13 +25,12 @@
         <pathelement path="${classpath.junit}"/>
         <pathelement path="${android.test.output}"/>
         <pathelement path="${classpath.robolectric}"/>
+        <pathelement path="${businesslogic.main.output}"/>
         <path refid="classpath.android.base"/>
         <path refid="${android.project.classpath}"/>
         <!-- Google APIs maps.jar included to satisfy robolectrics Shadow bindings -->
         <path location="${env.ANDROID_HOME}/add-ons/addon-google_apis-google-17/libs/maps.jar"/>
     </path>
-
-    <import file="AndroidFree/build_rules.xml" />
 
     <target name="-pre-build" depends="all-businesslogic"/>
     <target name="-pre-clean" depends="clean-businesslogic,clean-compile-android-tests"/>

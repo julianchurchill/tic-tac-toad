@@ -26,6 +26,7 @@
         <pathelement path="${classpath.junit}"/>
         <pathelement path="${android.test.output}"/>
         <pathelement path="${classpath.robolectric}"/>
+        <pathelement path="${android.businesslogic.lib}"/>
         <path refid="classpath.android.base"/>
         <path refid="${android.project.classpath}"/>
         <!-- Google APIs maps.jar included to satisfy robolectrics Shadow bindings -->

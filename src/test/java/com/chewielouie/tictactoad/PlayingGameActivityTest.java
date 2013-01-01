@@ -9,10 +9,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(RobolectricTestRunner.class)
-public class MainActivityTest {
+public class PlayingGameActivityTest {
     @Test
     public void drawsAnEmptyBoardIfPassedNull() {
-        MainActivity m = new MainActivity();
+        PlayingGameActivity m = new PlayingGameActivity();
         m.onCreate( null );
 
         m.displayBoard( null );

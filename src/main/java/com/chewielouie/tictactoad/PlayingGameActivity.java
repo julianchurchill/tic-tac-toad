@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.chewielouie.tictactoad.Board;
 import android.widget.TextView;
 
-public class MainActivity extends Activity
+public class PlayingGameActivity extends Activity
 {
     private final String emptyBoardText = ".|.|.\n.|.|.\n.|.|.";
 

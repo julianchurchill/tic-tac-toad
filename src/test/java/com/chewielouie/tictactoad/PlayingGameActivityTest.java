@@ -64,7 +64,21 @@ public class PlayingGameActivityTest {
         assertEquals( "O|O|O\nO|O|O\nO|O|O", t.getText().toString() );
     }
 
-    //public void drawsABoardFullOfCrossesCorrectly() {
+    @Test
+    public void drawsABoardFullOfCrossesCorrectly() {
+        PlayingGameActivity activity = createActivity();
+        final Board board = mockery.mock( Board.class );
+        mockery.checking( new Expectations() {{
+            allowing( board ).getContentAt( with( any( Coord.class ) ) );
+            will( returnValue( Board.Piece.Cross ) );
+        }});
+
+        activity.displayBoard( board );
+
+        final TextView t = (TextView)activity.findViewById( R.id.board );
+        assertEquals( "X|X|X\nX|X|X\nX|X|X", t.getText().toString() );
+    }
+
     //public void showsTurnPrompt();
 }
 

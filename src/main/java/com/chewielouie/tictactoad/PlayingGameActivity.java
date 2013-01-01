@@ -11,6 +11,7 @@ public class PlayingGameActivity extends Activity
     private final int boardSize = 3;
     private final int lastBoardCoordinate = boardSize-1;
     private final char NoughtBoardPoint = 'O';
+    private final char CrossBoardPoint = 'X';
     private final char EmptyBoardPoint = '.';
     private final char BoardPointSeperator = '|';
     private final char LineSeperator = '\n';
@@ -51,6 +52,8 @@ public class PlayingGameActivity extends Activity
     public char getTextRepresentationOfPoint( Coord coord ) {
         if( board.getContentAt( coord ) == Board.Piece.Nought )
             return NoughtBoardPoint;
+        else if( board.getContentAt( coord ) == Board.Piece.Cross )
+            return CrossBoardPoint;
         return EmptyBoardPoint;
     }
 }

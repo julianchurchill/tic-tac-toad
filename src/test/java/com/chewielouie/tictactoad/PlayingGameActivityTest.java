@@ -39,7 +39,7 @@ public class PlayingGameActivityTest {
         PlayingGameActivity activity = createActivity();
         final Board board = mockery.mock( Board.class );
         mockery.checking( new Expectations() {{
-            allowing( board ).getContent( with( any( Coord.class ) ) );
+            allowing( board ).getContentAt( with( any( Coord.class ) ) );
             will( returnValue( Board.Piece.None ) );
         }});
 
@@ -54,7 +54,7 @@ public class PlayingGameActivityTest {
         PlayingGameActivity activity = createActivity();
         final Board board = mockery.mock( Board.class );
         mockery.checking( new Expectations() {{
-            allowing( board ).getContent( with( any( Coord.class ) ) );
+            allowing( board ).getContentAt( with( any( Coord.class ) ) );
             will( returnValue( Board.Piece.Nought ) );
         }});
 

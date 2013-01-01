@@ -49,7 +49,7 @@ public class PlayingGameActivity extends Activity
     }
 
     public char getTextRepresentationOfPoint( Coord coord ) {
-        if( board.getContent( coord ) == Board.Piece.Nought )
+        if( board.getContentAt( coord ) == Board.Piece.Nought )
             return NoughtBoardPoint;
         return EmptyBoardPoint;
     }

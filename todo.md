@@ -10,9 +10,11 @@ Backlog
 - Human vs human game - user should be able to make alternating moves for either side until the board is full
 
 - Tests
-  - Coord should be a value object (equality and hashcode methods)
   - Implement BoardView interface in Android Activity
-      - Extract Contract Tests for BoardView from tests for Activity
+      - Extract Contract Tests for BoardView from tests for Activity (exception on null argument)
+      - Call Presenter.render() onResume
+      - Create a presenter and a model and hook up to activity as the view
+  - Coord should be a value object (equality and hashcode methods)
   - Implement Board
   - Implement basic BoardModel
 

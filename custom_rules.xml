@@ -29,6 +29,8 @@
         <pathelement path="${android.businesslogic.lib}"/>
         <path refid="classpath.android.base"/>
         <path refid="${android.project.classpath}"/>
+        <pathelement location="${android.libs.test}/jmock-2.6.0-RC2/jmock-2.6.0-RC2.jar"/>
+        <pathelement location="${android.libs.test}/jmock-2.6.0-RC2/jmock-junit4-2.6.0-RC2.jar"/>
         <!-- Google APIs maps.jar included to satisfy robolectrics Shadow bindings -->
         <path location="${env.ANDROID_HOME}/add-ons/addon-google_apis-google-17/libs/maps.jar"/>
     </path>

@@ -37,32 +37,34 @@ public class PlayingGameActivityTest {
     @Test
     public void drawsAnEmptyBoard() {
         PlayingGameActivity activity = createActivity();
-
         final Board board = mockery.mock( Board.class );
+        mockery.checking( new Expectations() {{
+            allowing( board ).getContent( with( any( Coord.class ) ) );
+            will( returnValue( Board.Piece.None ) );
+        }});
+
         activity.displayBoard( board );
 
         final TextView t = (TextView)activity.findViewById( R.id.board );
         assertEquals( ".|.|.\n.|.|.\n.|.|.", t.getText().toString() );
     }
 
-    //@Test
-    //public void drawsTheBoardContentCorrectly() {
-        //PlayingGameActivity activity = createActivity();
-        //final Board board = mockery.mock( Board.class );
+    @Test
+    public void drawsABoardFullOfNoughtsCorrectly() {
+        PlayingGameActivity activity = createActivity();
+        final Board board = mockery.mock( Board.class );
+        mockery.checking( new Expectations() {{
+            allowing( board ).getContent( with( any( Coord.class ) ) );
+            will( returnValue( Board.Piece.Nought ) );
+        }});
 
-        //mockery.checking( new Expectations() {{
-            //allowing( board ).getContent( new Coord( 0, 0 ) );
-            //will( returnValue( Board.Piece.Nought ) );
-            //allowing( board ).getContent( new Coord( 1, 1 ) );
-            //will( returnValue( Board.Piece.Cross ) );
-        //}});
+        activity.displayBoard( board );
 
-        //activity.displayBoard( board );
+        final TextView t = (TextView)activity.findViewById( R.id.board );
+        assertEquals( "O|O|O\nO|O|O\nO|O|O", t.getText().toString() );
+    }
 
-        //final TextView t = (TextView)activity.findViewById( R.id.board );
-        //assertEquals( "O|.|.\n.|X|.\n.|.|.", t.getText().toString() );
-    //}
-
+    //public void drawsABoardFullOfCrossesCorrectly() {
     //public void showsTurnPrompt();
 }
 

@@ -11,17 +11,17 @@ import org.junit.runner.RunWith;
 @RunWith(RobolectricTestRunner.class)
 public class MainActivityTest {
     @Test
-    public void drawsTheBoardPassedToIt() {
+    public void drawsAnEmptyBoardIfPassedNull() {
         MainActivity m = new MainActivity();
         m.onCreate( null );
 
-        m.displayBoard( new Board() );
+        m.displayBoard( null );
 
         final TextView t = (TextView)m.findViewById( R.id.board );
         assertEquals( ".|.|.\n.|.|.\n.|.|.", t.getText().toString() );
     }
 
+    //public void drawsTheBoardContentsWhenPassedToIt() {
     //public void showsTurnPrompt();
-    //public void drawsAnEmptyBoardIfPassedNull();
 }
 

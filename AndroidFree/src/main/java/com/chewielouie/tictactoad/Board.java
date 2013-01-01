@@ -1,4 +1,7 @@
 package com.chewielouie.tictactoad;
 
-class Board {
+public interface Board {
+    public enum Piece { None, Nought, Cross };
+
+    public Piece getContent( Coord c );
 }

@@ -21,7 +21,9 @@ public class PlayingGameActivityTest {
         assertEquals( ".|.|.\n.|.|.\n.|.|.", t.getText().toString() );
     }
 
-    //public void drawsTheBoardContentsWhenPassedToIt() {
+    //public void throwsARuntimeExceptionIfDisplayBoardIsPassedNull() {
+    //public void drawsAnEmptyBoard() {
+    //public void drawsTheBoardContentCorrectly() {
     //public void showsTurnPrompt();
 }
 

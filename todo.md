@@ -13,6 +13,6 @@ Backlog
   - Implement BoardView interface in Android Activity
       - How to handle BoardView::displayBoard( null )? Throw a runtime exception, i.e. ProgrammerMistake (see tddandroid.com)
       - Extract Contract Tests for BoardView from tests for Activity
-  - Implement basic BoardModel
   - Implement Board
+  - Implement basic BoardModel
 

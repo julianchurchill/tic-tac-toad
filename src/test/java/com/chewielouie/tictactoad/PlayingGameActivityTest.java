@@ -79,6 +79,12 @@ public class PlayingGameActivityTest {
         assertEquals( "X|X|X\nX|X|X\nX|X|X", t.getText().toString() );
     }
 
-    //public void showsTurnPrompt();
+    @Test
+    public void showsTurnPrompt() {
+        PlayingGameActivity activity = createActivity();
+
+        final TextView t = (TextView)activity.findViewById( R.id.turn_prompt );
+        assertEquals( "Your turn...", t.getText().toString() );
+    }
 }
 

@@ -10,5 +10,11 @@
     android:layout_height="wrap_content"
     android:text="Hello World, PlayingGameActivity"
     />
+<TextView
+    android:id="@+id/turn_prompt"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Your turn..."
+    />
 </LinearLayout>
 

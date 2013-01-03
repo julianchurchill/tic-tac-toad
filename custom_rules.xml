@@ -27,6 +27,7 @@
         <pathelement path="${android.test.output}"/>
         <pathelement path="${classpath.robolectric}"/>
         <pathelement path="${android.businesslogic.lib}"/>
+        <pathelement path="${businesslogic.test.output}"/>
         <path refid="classpath.android.base"/>
         <path refid="${android.project.classpath}"/>
         <pathelement location="${android.libs.test}/jmock-2.6.0-RC2/jmock-2.6.0-RC2.jar"/>

@@ -3,10 +3,11 @@ package com.chewielouie.tictactoad;
 import android.app.Activity;
 import android.os.Bundle;
 import com.chewielouie.tictactoad.Board;
+import com.chewielouie.tictactoad.PlayGameView;
 import java.lang.IllegalArgumentException;
 import android.widget.TextView;
 
-public class PlayingGameActivity extends Activity
+public class PlayingGameActivity extends Activity implements PlayGameView
 {
     private final int boardSize = 3;
     private final int lastBoardCoordinate = boardSize-1;

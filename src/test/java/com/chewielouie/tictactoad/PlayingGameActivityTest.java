@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import com.chewielouie.tictactoad.Board;
 import com.chewielouie.tictactoad.ProgrammerMistake;
+import com.chewielouie.tictactoad.PlayGameViewContract;
 import android.widget.TextView;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 import org.jmock.*;
@@ -12,9 +13,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(RobolectricTestRunner.class)
-public class PlayingGameActivityTest {
+public class PlayingGameActivityTest
+        extends PlayGameViewContract {
 
     private Mockery mockery = new Mockery();
+
+    protected PlayGameView createView() {
+        return createActivity();
+    }
 
     PlayingGameActivity createActivity() {
         PlayingGameActivity p = new PlayingGameActivity();

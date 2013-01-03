@@ -63,7 +63,7 @@
             <classpath refid="classpath.businesslogic.test"/>
             <batchtest fork="yes">
                 <fileset dir="${businesslogic.src.test}">
-                    <include name="**/*.java"/>
+                    <include name="**/*Test.java"/>
                 </fileset>
             </batchtest>
         </junit>

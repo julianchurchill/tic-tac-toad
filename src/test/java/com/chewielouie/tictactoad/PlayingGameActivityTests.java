@@ -13,7 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(RobolectricTestRunner.class)
-public class PlayingGameActivityTest
+public class PlayingGameActivityTests
         extends PlayGameViewContract {
 
     private Mockery mockery = new Mockery();

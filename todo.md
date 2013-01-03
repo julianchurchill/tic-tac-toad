@@ -11,7 +11,6 @@ Backlog
 
 - Tests
   - Implement BoardView interface in Android Activity
-      - Extract Contract Tests for BoardView from tests for Activity (exception on null argument)
       - Call Presenter.render() onResume
       - Create a presenter and a model and hook up to activity as the view
   - Coord should be a value object (equality and hashcode methods)

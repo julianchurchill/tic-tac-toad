@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public abstract class PlayGameViewContract {
 
-    public abstract PlayGameView createView();
+    protected abstract PlayGameView createView();
 
     @Test
     public void throwsARuntimeExceptionIfDisplayBoardIsPassedNull() {

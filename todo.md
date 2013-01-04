@@ -13,7 +13,6 @@ Backlog
   - Implement BoardView interface in Android Activity
       - Call Presenter.render() onResume
       - Create a presenter and a model and hook up to activity as the view
-  - Coord should be a value object (equality and hashcode methods)
   - Implement Board
   - Implement basic BoardModel
 

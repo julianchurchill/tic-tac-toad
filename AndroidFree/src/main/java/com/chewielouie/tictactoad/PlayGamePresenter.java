@@ -1,6 +1,6 @@
 package com.chewielouie.tictactoad;
 
-class PlayGamePresenter {
+class PlayGamePresenter implements RendersView {
     private final PlayGameModel model;
     private final PlayGameView view;
 

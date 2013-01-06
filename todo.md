@@ -11,5 +11,6 @@ Backlog
 
 - Tests
   - Implement Board
+    - BoardIterator ?  instead of traversing by Coord which perpetuates a primitive obsession (x, y, width, height)...
   - Implement basic BoardModel
 

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import com.chewielouie.tictactoad.Board;
 import com.chewielouie.tictactoad.ProgrammerMistake;
 import com.chewielouie.tictactoad.PlayGameViewContract;
+import com.chewielouie.tictactoad.RendersView;
 import android.widget.TextView;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 import org.jmock.*;
@@ -91,6 +92,24 @@ public class PlayingGameActivityTests
 
         final TextView t = (TextView)activity.findViewById( R.id.turn_prompt );
         assertEquals( "Your turn...", t.getText().toString() );
+    }
+
+    @Test
+    public void rendersThePresenterOnResume() {
+        final RendersView rendersView = mockery.mock( RendersView.class );
+        mockery.checking( new Expectations() {{
+            oneOf( rendersView ).render();
+        }});
+
+        new PlayingGameActivity( rendersView ) {
+            // Override to make onResume() accessible for testing
+            @Override
+            public void onResume() {
+                super.onResume();
+            }
+        }.onResume();
+
+        mockery.assertIsSatisfied();
     }
 }
 

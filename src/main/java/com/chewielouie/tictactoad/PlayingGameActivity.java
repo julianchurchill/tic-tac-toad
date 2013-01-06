@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import com.chewielouie.tictactoad.Board;
 import com.chewielouie.tictactoad.PlayGameView;
+import com.chewielouie.tictactoad.RendersView;
 import java.lang.IllegalArgumentException;
 import android.widget.TextView;
 
@@ -17,6 +18,15 @@ public class PlayingGameActivity extends Activity implements PlayGameView
     private final char BoardPointSeperator = '|';
     private final char LineSeperator = '\n';
     private Board board = null;
+    private final RendersView rendersView;
+
+    public PlayingGameActivity() {
+        this.rendersView = null;
+    }
+
+    public PlayingGameActivity( RendersView p ) {
+        this.rendersView = p;
+    }
 
     /** Called when the activity is first created. */
     @Override
@@ -24,6 +34,11 @@ public class PlayingGameActivity extends Activity implements PlayGameView
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+    }
+
+    @Override
+    public void onResume() {
+        rendersView.render();
     }
 
     public void displayBoard( Board b ) {

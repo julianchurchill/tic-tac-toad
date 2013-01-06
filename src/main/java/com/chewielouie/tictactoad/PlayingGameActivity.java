@@ -21,7 +21,18 @@ public class PlayingGameActivity extends Activity implements PlayGameView
     private final RendersView rendersView;
 
     public PlayingGameActivity() {
-        this.rendersView = null;
+        // Fake out the model until we've got a real one
+        this.rendersView = new PlayGamePresenter( new PlayGameModel() {
+            @Override
+            public Board retrieveBoard() {
+                return new Board() {
+                    @Override
+                    public Piece getContentAt( Coord c ) {
+                        return Board.Piece.None;
+                    }
+                };
+            }
+        }, this );
     }
 
     public PlayingGameActivity( RendersView p ) {

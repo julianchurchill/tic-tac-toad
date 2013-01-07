@@ -16,6 +16,10 @@ public class NormalBoard {
                 pieces[x][y] = Board.Piece.None;
     }
 
+    public NormalBoardIterator iterator() {
+        return new NormalBoardIterator( pieces );
+    }
+
     public int width() {
         return WIDTH;
     }

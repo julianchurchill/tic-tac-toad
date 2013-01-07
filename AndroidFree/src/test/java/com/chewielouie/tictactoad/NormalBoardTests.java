@@ -15,6 +15,46 @@ public class NormalBoardTests {
     }
 
     @Test
+    public void iterator_can_retrieve_correct_number_of_board_points() {
+        final NormalBoard board = new NormalBoard();
+
+        int count = 0;
+        NormalBoardIterator iterator = board.iterator();
+        for( ; iterator.hasNext(); iterator.next() )
+            count++;
+        assertEquals( board.width()*board.height(), count );
+    }
+
+    @Test
+    public void iterator_returns_correct_piece_for_board_points() {
+        final NormalBoard board = new NormalBoard();
+
+        int count = 0;
+        NormalBoardIterator iterator = board.iterator();
+        for( ; iterator.hasNext(); iterator.next() ) {
+            Coord c = new Coord( count % board.width(),
+                                 count / board.width() );
+            assertEquals( board.getContentAt( c ),
+                          iterator.piece() );
+            count++;
+        }
+    }
+
+    @Test
+    public void iterator_returns_correct_coord_for_board_points() {
+        final NormalBoard board = new NormalBoard();
+
+        int count = 0;
+        NormalBoardIterator iterator = board.iterator();
+        for( ; iterator.hasNext(); iterator.next() ) {
+            Coord c = new Coord( count % board.width(),
+                                 count / board.width() );
+            assertEquals( c, iterator.coord() );
+            count++;
+        }
+    }
+
+    @Test
     public void should_be_empty_on_construction() {
         final NormalBoard board = new NormalBoard();
 

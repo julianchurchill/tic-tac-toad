@@ -58,14 +58,9 @@ public class NormalBoardTests {
     public void should_be_empty_on_construction() {
         final NormalBoard board = new NormalBoard();
 
-        for( int x = 0; x < board.width(); ++x )
-            for( int y = 0; y < board.height(); ++y )
-                assertEquals( Board.Piece.None,
-                              board.getContentAt( new Coord( x, y ) ) );
-
-        //BoardIterator iter = board.start();
-        //for( ; iter != board.end(); ++iter )
-            //assertEquals( Board.Piece.None, iter.piece() );
+        NormalBoardIterator iterator = board.iterator();
+        for( ; iterator.hasNext(); iterator.next() )
+            assertEquals( Board.Piece.None, iterator.piece() );
     }
 
     @Test
@@ -81,23 +76,15 @@ public class NormalBoardTests {
     public void should_not_change_any_other_piece_when_one_is_set() {
         final NormalBoard board = new NormalBoard();
 
-        final int test_x = 1;
-        final int test_y = 0;
-        board.setContentAt( new Coord( test_x, test_y ), Board.Piece.Nought );
+        final Coord test_coord = new Coord( 1, 0 );
+        board.setContentAt( test_coord, Board.Piece.Nought );
 
         final NormalBoard emptyBoard = new NormalBoard();
-        for( int x = 0; x < board.width(); ++x )
-            for( int y = 0; y < board.height(); ++y )
-                if( x != test_x && y != test_y )
-                    assertEquals( emptyBoard.getContentAt( new Coord( x, y ) ),
-                                  board.getContentAt( new Coord( x, y ) ) );
-
-        //final Coord test_coord = new Coord( 1, 0 );
-        //BoardIterator iter = board.start();
-        //for( ; iter != board.end(); ++iter )
-            //if( iter.coord() != test_coord )
-                //assertEquals( emptyBoard.getContentAt( iter.coord() ),
-                              //iter.piece() );
+        NormalBoardIterator iterator = board.iterator();
+        for( ; iterator.hasNext(); iterator.next() )
+            if( iterator.coord().equals( test_coord ) == false )
+                assertEquals( emptyBoard.getContentAt( iterator.coord() ),
+                              iterator.piece() );
     }
 
     //public void is_a_value_object() {

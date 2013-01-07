@@ -45,6 +45,13 @@ public class CoordTests {
 
         assertNotEquals( c1.hashCode(), c2.hashCode() );
     }
+
+    @Test
+    public void to_string() {
+        Coord c1 = new Coord( 4, 76 );
+
+        assertEquals( "(4,76)", c1.toString() );
+    }
 }
 
 

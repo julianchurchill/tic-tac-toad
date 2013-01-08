@@ -87,7 +87,52 @@ public class NormalBoardTests {
                               iterator.piece() );
     }
 
-    //public void is_a_value_object() {
+    @Test
+    public void two_boards_with_the_same_value_should_be_equal() {
+        final NormalBoard board1 = new NormalBoard();
+        board1.setContentAt( new Coord( 1, 0 ), Board.Piece.Nought );
+        final NormalBoard board2 = new NormalBoard();
+        board2.setContentAt( new Coord( 1, 0 ), Board.Piece.Nought );
+
+        assertEquals( board1, board2 );
+    }
+
+    @Test
+    public void two_boards_with_different_values_should_not_be_equal() {
+        final NormalBoard board1 = new NormalBoard();
+        board1.setContentAt( new Coord( 1, 0 ), Board.Piece.Nought );
+        final NormalBoard board2 = new NormalBoard();
+
+        assertNotEquals( board1, board2 );
+    }
+
+    @Test
+    public void a_board_is_not_equal_to_a_non_board() {
+        final NormalBoard board = new NormalBoard();
+        Object notABoard = new Object();
+
+        assertNotEquals( board, notABoard );
+    }
+
+    @Test
+    public void two_boards_with_the_same_value_should_have_the_same_hashcode() {
+        final NormalBoard board1 = new NormalBoard();
+        board1.setContentAt( new Coord( 1, 0 ), Board.Piece.Nought );
+        final NormalBoard board2 = new NormalBoard();
+        board2.setContentAt( new Coord( 1, 0 ), Board.Piece.Nought );
+
+        assertEquals( board1.hashCode(), board2.hashCode() );
+    }
+
+    @Test
+    public void two_boards_with_different_values_should_have_different_hashcodes() {
+        final NormalBoard board1 = new NormalBoard();
+        board1.setContentAt( new Coord( 1, 0 ), Board.Piece.Nought );
+        final NormalBoard board2 = new NormalBoard();
+
+        assertNotEquals( board1.hashCode(), board2.hashCode() );
+    }
+
     // Contract test?
     //public void should_throw_an_exception_when_asked_for_a_piece_outside_of_the_board() {
 }

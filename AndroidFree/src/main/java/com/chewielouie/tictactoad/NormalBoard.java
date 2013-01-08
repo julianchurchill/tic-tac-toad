@@ -35,4 +35,26 @@ public class NormalBoard {
     public Board.Piece getContentAt( Coord c ) {
         return pieces[c.x()][c.y()];
     }
+
+    @Override
+    public boolean equals( Object o ) {
+        if( !(o instanceof NormalBoard) )
+            return false;
+        NormalBoard other = (NormalBoard)o;
+        for( int x = 0; x < width(); ++x )
+            for( int y = 0; y < height(); ++y )
+                if( pieces[x][y] != other.pieces[x][y] )
+                    return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        for( int x = 0; x < width(); ++x )
+            for( int y = 0; y < height(); ++y )
+                result = prime * result + pieces[x][y].hashCode();
+        return result;
+    }
 }

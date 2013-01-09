@@ -1,14 +1,17 @@
 package com.chewielouie.tictactoad;
 
-import com.chewielouie.tictactoad.Board;
+import com.chewielouie.tictactoad.BoardModel;
 import com.chewielouie.tictactoad.ProgrammerMistake;
 
-//public class NormalBoard implements Board {
-public class NormalBoard {
+public class NormalBoard implements PlayGameModel, Board {
     private final int WIDTH = 3;
     private final int HEIGHT = 3;
     private Board.Piece piece = Board.Piece.None;
     private Board.Piece[][] pieces;
+
+    public Board retrieveBoard() {
+        return this;
+    }
 
     public NormalBoard() {
         pieces = new Board.Piece[WIDTH][HEIGHT];

@@ -2,7 +2,7 @@ package com.chewielouie.tictactoad;
 
 import android.app.Activity;
 import android.os.Bundle;
-import com.chewielouie.tictactoad.Board;
+import com.chewielouie.tictactoad.NormalBoard;
 import com.chewielouie.tictactoad.PlayGameView;
 import com.chewielouie.tictactoad.RendersView;
 import java.lang.IllegalArgumentException;
@@ -21,18 +21,7 @@ public class PlayingGameActivity extends Activity implements PlayGameView
     private final RendersView rendersView;
 
     public PlayingGameActivity() {
-        // Fake out the model until we've got a real one
-        this.rendersView = new PlayGamePresenter( new PlayGameModel() {
-            @Override
-            public Board retrieveBoard() {
-                return new Board() {
-                    @Override
-                    public Piece getContentAt( Coord c ) {
-                        return Board.Piece.None;
-                    }
-                };
-            }
-        }, this );
+        this.rendersView = new PlayGamePresenter( new NormalBoard(), this );
     }
 
     public PlayingGameActivity( RendersView p ) {

@@ -7,10 +7,10 @@ Backlog
 =======
 
 ... - Show the user an empty board, stating 'Your turn'.
+  - Try in the Android simulator
 - Human vs human game - user should be able to make alternating moves for either side until the board is full
 
 - Tests
-  - Implement Board
-    - Make into a value object
-  - Implement basic BoardModel
+  - Add graphics to board display in PlayingGameActivityTests
+  - React to user input to place alternate noughts and crosses
 

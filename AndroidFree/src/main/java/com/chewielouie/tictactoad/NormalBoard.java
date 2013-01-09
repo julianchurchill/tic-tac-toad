@@ -1,6 +1,7 @@
 package com.chewielouie.tictactoad;
 
 import com.chewielouie.tictactoad.Board;
+import com.chewielouie.tictactoad.ProgrammerMistake;
 
 //public class NormalBoard implements Board {
 public class NormalBoard {
@@ -33,6 +34,11 @@ public class NormalBoard {
     }
 
     public Board.Piece getContentAt( Coord c ) {
+        if( c.x() >= width() ||
+            c.y() >= height() ||
+            c.x() < 0 ||
+            c.y() < 0 )
+            throw new ProgrammerMistake( new ArrayIndexOutOfBoundsException() );
         return pieces[c.x()][c.y()];
     }
 

@@ -1,6 +1,5 @@
 package com.chewielouie.tictactoad;
 
-import com.chewielouie.tictactoad.BoardModel;
 import com.chewielouie.tictactoad.ProgrammerMistake;
 
 public class NormalBoard implements PlayGameModel, Board {

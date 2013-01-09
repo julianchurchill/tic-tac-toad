@@ -1,15 +1,15 @@
 package com.chewielouie.tictactoad;
 
 class PlayGamePresenter implements RendersView {
-    private final PlayGameModel model;
+    private final Board board;
     private final PlayGameView view;
 
-    public PlayGamePresenter( PlayGameModel m, PlayGameView v ) {
-        this.model = m;
+    public PlayGamePresenter( Board b, PlayGameView v ) {
+        this.board = b;
         this.view = v;
     }
 
     public void render() {
-        view.displayBoard( model.retrieveBoard() );
+        view.displayBoard( board );
     }
 }

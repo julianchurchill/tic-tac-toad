@@ -38,6 +38,7 @@ public class PlayingGameActivity extends Activity implements PlayGameView
 
     @Override
     public void onResume() {
+        super.onResume();
         rendersView.render();
     }
 

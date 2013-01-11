@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    >
+    android:background="#000000">
 <TextView
     android:id="@+id/board"
     android:layout_width="fill_parent"
@@ -16,5 +16,9 @@
     android:layout_height="wrap_content"
     android:text="Your turn..."
     />
+<com.chewielouie.tictactoad.GraphicalBoardView
+    android:id="@+id/graphical_board"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"/>
 </LinearLayout>
 

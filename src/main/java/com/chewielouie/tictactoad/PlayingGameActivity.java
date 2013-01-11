@@ -6,6 +6,7 @@ import com.chewielouie.tictactoad.NormalBoard;
 import com.chewielouie.tictactoad.PlayGameView;
 import com.chewielouie.tictactoad.RendersView;
 import java.lang.IllegalArgumentException;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class PlayingGameActivity extends Activity implements PlayGameView
@@ -50,6 +51,9 @@ public class PlayingGameActivity extends Activity implements PlayGameView
         board = b;
         TextView t = (TextView)findViewById( R.id.board );
         t.setText( generateBoardText() );
+
+        final ImageView v = (ImageView)findViewById( R.id.graphical_board );
+        v.invalidate();
     }
 
     private String generateBoardText() {

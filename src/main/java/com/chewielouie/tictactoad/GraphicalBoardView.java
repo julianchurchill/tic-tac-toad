@@ -12,7 +12,7 @@ import android.widget.ImageView;
 public class GraphicalBoardView extends ImageView {
     private OpenGridShape grid = new OpenGridShape( 3, 3 );
     private ShapeDrawable lilyPad = new ShapeDrawable();
-    private Board board = null;
+    private Board board = new NullBoard();
 
     public GraphicalBoardView( Context context, AttributeSet attrs ) {
         super( context, attrs );

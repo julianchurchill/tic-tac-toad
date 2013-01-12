@@ -39,19 +39,12 @@ public class GraphicalBoardView extends ImageView {
     }
 
     private void drawBoardContent( Canvas c ) {
-        for( int column = 0; column < grid.numberOfColumns(); column++ ) {
-            for( int row = 0; row < grid.numberOfRows(); row++ ) {
-                lilyPad.setBounds( grid.cellBounds( column, row ) );
-                lilyPad.draw( c );
-            }
+        BoardIterator iterator = board.iterator();
+        for( ; iterator.hasNext(); iterator.next() ) {
+            lilyPad.setBounds( grid.cellBounds( iterator.coord().x(),
+                                                iterator.coord().y() ) );
+            lilyPad.draw( c );
         }
-
-        //NormalBoardIterator iterator = board.iterator();
-        //for( ; iterator.hasNext(); iterator.next() ) {
-            //lilyPad.setBounds( grid.cellBounds( iterator.coord().x(),
-                                                //iterator.coord().y() ) );
-            //lilyPad.draw( c );
-        //}
     }
 }
 

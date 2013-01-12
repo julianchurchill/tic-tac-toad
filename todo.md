@@ -7,6 +7,7 @@ Backlog
 =======
 
 - Change PlayingGameActivity::generateBoardText() to use iterator
+  - Downside is it makes the unit testing trickier because of having to mock the iterator... how do we do this or is this a sign that using an iterator here is a bad idea?
 - Add graphics to board display
   - Add lily pad graphics assuming an empty board
     - GraphicalBoardView must invalidate itself when passed a Board

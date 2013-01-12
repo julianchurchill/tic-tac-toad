@@ -35,29 +35,17 @@ public class GraphicalBoardView extends ImageView {
     private void drawBoardContent( Canvas c ) {
         for( int column = 0; column < grid.numberOfColumns(); column++ ) {
             for( int row = 0; row < grid.numberOfRows(); row++ ) {
-                Coord gridPixels = convertBoardCellToGridPixels( new Coord( column, row ) );
-                int x = gridPixels.x();
-                int y = gridPixels.y();
-                lilyPad.setBounds( x, y, x + grid.cellWidth(), y + grid.cellHeight() );
+                lilyPad.setBounds( grid.cellBounds( column, row ) );
                 lilyPad.draw( c );
             }
         }
 
         //NormalBoardIterator iterator = board.iterator();
         //for( ; iterator.hasNext(); iterator.next() ) {
-            ////Coord gridPixels = convertBoardCellCoordToGridPixels( iterator.coord() );
-            ////int x = gridPixels.x();
-            ////int y = gridPixels.y();
-            //int x = iterator.coord().x() * grid.cellWidth();
-            //int y = iterator.coord().y() * grid.cellHeight();
-            //lilyPad.setBounds( x, y, x + grid.cellWidth(), y + grid.cellHeight() );
+            //lilyPad.setBounds( grid.cellBounds( iterator.coord().x(),
+                                                //iterator.coord().y() ) );
             //lilyPad.draw( c );
         //}
-    }
-
-    private Coord convertBoardCellToGridPixels( Coord boardCell ) {
-        return new Coord( boardCell.x() * grid.cellWidth(),
-                          boardCell.y() * grid.cellHeight() );
     }
 }
 

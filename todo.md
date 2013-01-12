@@ -7,9 +7,15 @@ Backlog
 =======
 
 - Add graphics to board display
+  - Add lily pad graphics assuming an empty board
+    - GraphicalBoardView must invalidate itself when passed a Board
+  - Add frog and lily pad graphics based on actual board contents
   - GraphicalBoardView needs Board size to set up OpenGridShape correctly
+    - If passed a Board of a different size create a new OpenGridShape
+
 - React to user input to place alternate noughts and crosses until the board is full
   - When model updated it must notify listeners (i.e the presenter which will render itself)
+
 - Human vs random computer
 - Human vs medium computer
 - Human vs perfect play computer

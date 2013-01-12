@@ -3,6 +3,7 @@ package com.chewielouie.tictactoad;
 import android.graphics.Color;
 import android.graphics.Path.Direction;
 import android.graphics.Path;
+import android.graphics.Rect;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.PathShape;
 
@@ -41,28 +42,36 @@ public class OpenGridShape extends ShapeDrawable {
                           Path.Direction.CW );
     }
 
-    final int width() {
+    public final int width() {
        return cellWidth * numberOfColumns;
     }
 
-    final int height() {
+    public final int height() {
        return cellHeight * numberOfRows;
     }
 
-    final int cellWidth() {
+    public final int cellWidth() {
         return cellWidth;
     }
 
-    final int cellHeight() {
+    public final int cellHeight() {
         return cellHeight;
     }
 
-    final int numberOfColumns() {
+    public final int numberOfColumns() {
         return numberOfColumns;
     }
 
-    final int numberOfRows() {
+    public final int numberOfRows() {
         return numberOfRows;
+    }
+
+    public Rect cellBounds( int column, int row ) {
+        return new Rect(
+                column * cellWidth(),
+                row * cellHeight(),
+                column * cellWidth() + cellWidth(),
+                row * cellHeight() + cellHeight() );
     }
 }
 

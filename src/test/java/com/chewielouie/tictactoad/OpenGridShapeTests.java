@@ -27,5 +27,41 @@ public class OpenGridShapeTests {
 
         assertEquals( o.height(), o.cellHeight() * rows );
     }
+
+    @Test
+    public void cellBoundsLeftIsCorrect() {
+        final int columns = 3;
+        final int rows = 7;
+        OpenGridShape o = new OpenGridShape( columns, rows );
+
+        assertEquals( o.cellBounds( 2, 2 ).left, 2 * o.cellWidth() );
+    }
+
+    @Test
+    public void cellBoundsTopIsCorrect() {
+        final int columns = 3;
+        final int rows = 7;
+        OpenGridShape o = new OpenGridShape( columns, rows );
+
+        assertEquals( o.cellBounds( 2, 2 ).top, 2 * o.cellHeight() );
+    }
+
+    @Test
+    public void cellBoundsRightIsCorrect() {
+        final int columns = 3;
+        final int rows = 7;
+        OpenGridShape o = new OpenGridShape( columns, rows );
+
+        assertEquals( o.cellBounds( 2, 2 ).right, 3 * o.cellWidth() );
+    }
+
+    @Test
+    public void cellBoundsBottomIsCorrect() {
+        final int columns = 3;
+        final int rows = 7;
+        OpenGridShape o = new OpenGridShape( columns, rows );
+
+        assertEquals( o.cellBounds( 2, 2 ).bottom, 3 * o.cellHeight() );
+    }
 }
 

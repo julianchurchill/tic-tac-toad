@@ -6,6 +6,7 @@ TODO
 Backlog
 =======
 
+- Change PlayingGameActivity::generateBoardText() to use iterator
 - Add graphics to board display
   - Add lily pad graphics assuming an empty board
     - GraphicalBoardView must invalidate itself when passed a Board

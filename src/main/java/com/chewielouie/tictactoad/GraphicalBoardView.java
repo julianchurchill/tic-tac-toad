@@ -35,8 +35,9 @@ public class GraphicalBoardView extends ImageView {
     private void drawBoardContent( Canvas c ) {
         for( int column = 0; column < grid.numberOfColumns(); column++ ) {
             for( int row = 0; row < grid.numberOfRows(); row++ ) {
-                int x = column * grid.cellWidth();
-                int y = row * grid.cellHeight();
+                Coord gridPixels = convertBoardCellToGridPixels( new Coord( column, row ) );
+                int x = gridPixels.x();
+                int y = gridPixels.y();
                 lilyPad.setBounds( x, y, x + grid.cellWidth(), y + grid.cellHeight() );
                 lilyPad.draw( c );
             }
@@ -52,6 +53,11 @@ public class GraphicalBoardView extends ImageView {
             //lilyPad.setBounds( x, y, x + grid.cellWidth(), y + grid.cellHeight() );
             //lilyPad.draw( c );
         //}
+    }
+
+    private Coord convertBoardCellToGridPixels( Coord boardCell ) {
+        return new Coord( boardCell.x() * grid.cellWidth(),
+                          boardCell.y() * grid.cellHeight() );
     }
 }
 

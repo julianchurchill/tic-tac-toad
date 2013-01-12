@@ -56,5 +56,13 @@ public class OpenGridShape extends ShapeDrawable {
     final int cellHeight() {
         return cellHeight;
     }
+
+    final int numberOfColumns() {
+        return numberOfColumns;
+    }
+
+    final int numberOfRows() {
+        return numberOfRows;
+    }
 }
 

@@ -15,36 +15,46 @@ public class OpenGridShape extends ShapeDrawable {
     private int numberOfRows = 3;
     private int lineWidth = 2;
 
-    public OpenGridShape() {
+    public OpenGridShape( int columns, int rows ) {
         super();
+        numberOfColumns = columns;
+        numberOfRows = rows;
         Path path = new Path();
         addVerticalLines( path );
         addHorizontalLines( path );
-        setShape( new PathShape( path, totalWidth(), totalHeight() ) );
+        setShape( new PathShape( path, width(), height() ) );
         getPaint().setColor( Color.WHITE );
-        setBounds(left, top, left + totalWidth(), top + totalHeight());
+        setBounds(left, top, left + width(), top + height());
     }
 
     private void addVerticalLines( Path path ) {
         for( int i = 1; i < numberOfColumns; ++i )
             path.addRect( i*cellWidth, top,
-                          i*cellWidth+lineWidth, top+totalHeight(),
+                          i*cellWidth+lineWidth, top+height(),
                           Path.Direction.CW );
     }
 
     private void addHorizontalLines( Path path ) {
         for( int i = 1; i < numberOfRows; ++i )
             path.addRect( left, i*cellHeight,
-                          left+totalWidth(), i*cellHeight+lineWidth,
+                          left+width(), i*cellHeight+lineWidth,
                           Path.Direction.CW );
     }
 
-    final int totalWidth() {
+    final int width() {
        return cellWidth * numberOfColumns;
     }
 
-    final int totalHeight() {
+    final int height() {
        return cellHeight * numberOfRows;
+    }
+
+    final int cellWidth() {
+        return cellWidth;
+    }
+
+    final int cellHeight() {
+        return cellHeight;
     }
 }
 

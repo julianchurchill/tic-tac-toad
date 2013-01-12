@@ -8,7 +8,8 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 
 public class GraphicalBoardView extends ImageView {
-    private ShapeDrawable grid = new OpenGridShape();
+    private ShapeDrawable grid = new OpenGridShape( 3, 3 );
+
     public GraphicalBoardView( Context context, AttributeSet attrs ) {
         super( context, attrs );
     }

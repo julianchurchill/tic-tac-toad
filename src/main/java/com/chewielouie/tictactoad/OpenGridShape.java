@@ -1,5 +1,6 @@
 package com.chewielouie.tictactoad;
 
+import com.chewielouie.tictactoad.Coord;
 import android.graphics.Color;
 import android.graphics.Path.Direction;
 import android.graphics.Path;
@@ -66,12 +67,12 @@ public class OpenGridShape extends ShapeDrawable {
         return numberOfRows;
     }
 
-    public Rect cellBounds( int column, int row ) {
+    public Rect cellBounds( Coord c ) {
         return new Rect(
-                column * cellWidth(),
-                row * cellHeight(),
-                column * cellWidth() + cellWidth(),
-                row * cellHeight() + cellHeight() );
+                c.x() * cellWidth(),
+                c.y() * cellHeight(),
+                c.x() * cellWidth() + cellWidth(),
+                c.y() * cellHeight() + cellHeight() );
     }
 }
 

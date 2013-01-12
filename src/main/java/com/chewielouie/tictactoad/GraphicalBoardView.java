@@ -41,8 +41,7 @@ public class GraphicalBoardView extends ImageView {
     private void drawBoardContent( Canvas c ) {
         BoardIterator iterator = board.iterator();
         for( ; iterator.hasNext(); iterator.next() ) {
-            lilyPad.setBounds( grid.cellBounds( iterator.coord().x(),
-                                                iterator.coord().y() ) );
+            lilyPad.setBounds( grid.cellBounds( iterator.coord() ) );
             lilyPad.draw( c );
         }
     }

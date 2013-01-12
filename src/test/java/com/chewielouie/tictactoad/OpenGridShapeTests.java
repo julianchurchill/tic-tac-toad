@@ -34,7 +34,7 @@ public class OpenGridShapeTests {
         final int rows = 7;
         OpenGridShape o = new OpenGridShape( columns, rows );
 
-        assertEquals( o.cellBounds( 2, 2 ).left, 2 * o.cellWidth() );
+        assertEquals( o.cellBounds( new Coord( 2, 2 ) ).left, 2 * o.cellWidth() );
     }
 
     @Test
@@ -43,7 +43,7 @@ public class OpenGridShapeTests {
         final int rows = 7;
         OpenGridShape o = new OpenGridShape( columns, rows );
 
-        assertEquals( o.cellBounds( 2, 2 ).top, 2 * o.cellHeight() );
+        assertEquals( o.cellBounds( new Coord( 2, 2 ) ).top, 2 * o.cellHeight() );
     }
 
     @Test
@@ -52,7 +52,7 @@ public class OpenGridShapeTests {
         final int rows = 7;
         OpenGridShape o = new OpenGridShape( columns, rows );
 
-        assertEquals( o.cellBounds( 2, 2 ).right, 3 * o.cellWidth() );
+        assertEquals( o.cellBounds( new Coord( 2, 2 ) ).right, 3 * o.cellWidth() );
     }
 
     @Test
@@ -61,7 +61,7 @@ public class OpenGridShapeTests {
         final int rows = 7;
         OpenGridShape o = new OpenGridShape( columns, rows );
 
-        assertEquals( o.cellBounds( 2, 2 ).bottom, 3 * o.cellHeight() );
+        assertEquals( o.cellBounds( new Coord( 2, 2 ) ).bottom, 3 * o.cellHeight() );
     }
 }
 

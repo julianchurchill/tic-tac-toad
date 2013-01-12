@@ -7,6 +7,7 @@ Backlog
 =======
 
 - Add graphics to board display
+  - GraphicalBoardView needs Board size to set up OpenGridShape correctly
 - React to user input to place alternate noughts and crosses until the board is full
   - When model updated it must notify listeners (i.e the presenter which will render itself)
 - Human vs random computer

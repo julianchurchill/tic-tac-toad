@@ -15,7 +15,7 @@ public class NormalBoard implements Board {
                 pieces[x][y] = Board.Piece.None;
     }
 
-    public NormalBoardIterator iterator() {
+    public BoardIterator iterator() {
         return new NormalBoardIterator( pieces );
     }
 

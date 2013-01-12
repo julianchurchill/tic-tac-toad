@@ -6,4 +6,5 @@ public interface Board {
     public int width();
     public int height();
     public Piece getContentAt( Coord c );
+    public BoardIterator iterator();
 }

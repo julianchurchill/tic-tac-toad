@@ -19,7 +19,7 @@ public class NormalBoardTests {
         final NormalBoard board = new NormalBoard();
 
         int count = 0;
-        NormalBoardIterator iterator = board.iterator();
+        BoardIterator iterator = board.iterator();
         for( ; iterator.hasNext(); iterator.next() )
             count++;
         assertEquals( board.width()*board.height(), count );
@@ -30,7 +30,7 @@ public class NormalBoardTests {
         final NormalBoard board = new NormalBoard();
 
         int count = 0;
-        NormalBoardIterator iterator = board.iterator();
+        BoardIterator iterator = board.iterator();
         for( ; iterator.hasNext(); iterator.next() ) {
             Coord c = new Coord( count % board.width(),
                                  count / board.width() );
@@ -45,7 +45,7 @@ public class NormalBoardTests {
         final NormalBoard board = new NormalBoard();
 
         int count = 0;
-        NormalBoardIterator iterator = board.iterator();
+        BoardIterator iterator = board.iterator();
         for( ; iterator.hasNext(); iterator.next() ) {
             Coord c = new Coord( count % board.width(),
                                  count / board.width() );
@@ -58,7 +58,7 @@ public class NormalBoardTests {
     public void should_be_empty_on_construction() {
         final NormalBoard board = new NormalBoard();
 
-        NormalBoardIterator iterator = board.iterator();
+        BoardIterator iterator = board.iterator();
         for( ; iterator.hasNext(); iterator.next() )
             assertEquals( Board.Piece.None, iterator.piece() );
     }
@@ -80,7 +80,7 @@ public class NormalBoardTests {
         board.setContentAt( test_coord, Board.Piece.Nought );
 
         final NormalBoard emptyBoard = new NormalBoard();
-        NormalBoardIterator iterator = board.iterator();
+        BoardIterator iterator = board.iterator();
         for( ; iterator.hasNext(); iterator.next() )
             if( iterator.coord().equals( test_coord ) == false )
                 assertEquals( emptyBoard.getContentAt( iterator.coord() ),

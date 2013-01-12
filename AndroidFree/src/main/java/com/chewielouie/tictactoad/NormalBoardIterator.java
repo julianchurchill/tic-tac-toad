@@ -1,6 +1,8 @@
 package com.chewielouie.tictactoad;
 
-public class NormalBoardIterator {
+import com.chewielouie.tictactoad.BoardIterator;
+
+public class NormalBoardIterator implements BoardIterator {
     private int width = 0;
     private int height = 0;
     private int currentIndex = 0;

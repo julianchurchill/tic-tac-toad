@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 import com.xtremelabs.robolectric.Robolectric;
-import com.xtremelabs.robolectric.shadows.ShadowImageView;
 import org.jmock.*;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
@@ -87,28 +86,6 @@ public class PlayingGameActivityTests
 
         final TextView t = (TextView)activity.findViewById( R.id.board );
         assertEquals( "X|X|X\nX|X|X\nX|X|X", t.getText().toString() );
-    }
-
-    @Test
-    public void drawsAnEmptyGraphicalBoard() {
-        PlayingGameActivity activity = createActivity();
-        final Board board = mockery.mock( Board.class );
-        mockery.checking( new Expectations() {{
-            allowing( board ).getContentAt( with( any( Coord.class ) ) );
-            will( returnValue( Board.Piece.None ) );
-
-            allowing( board ).width();
-            will( returnValue( 3 ) );
-
-            allowing( board ).height();
-            will( returnValue( 3 ) );
-        }});
-
-        activity.displayBoard( board );
-
-        final ImageView v = (ImageView)activity.findViewById( R.id.graphical_board );
-        ShadowImageView shadowV = Robolectric.shadowOf( v );
-        assertTrue( shadowV.wasInvalidated() );
     }
 
     @Test

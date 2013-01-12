@@ -52,8 +52,8 @@ public class PlayingGameActivity extends Activity implements PlayGameView
         TextView t = (TextView)findViewById( R.id.board );
         t.setText( generateBoardText() );
 
-        final ImageView v = (ImageView)findViewById( R.id.graphical_board );
-        v.invalidate();
+        final GraphicalBoardView v = (GraphicalBoardView)findViewById( R.id.graphical_board );
+        v.updateFromBoard( b );
     }
 
     private String generateBoardText() {

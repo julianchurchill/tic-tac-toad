@@ -12,6 +12,7 @@ import android.widget.ImageView;
 public class GraphicalBoardView extends ImageView {
     private OpenGridShape grid = new OpenGridShape( 3, 3 );
     private ShapeDrawable lilyPad = new ShapeDrawable();
+    private Board board = null;
 
     public GraphicalBoardView( Context context, AttributeSet attrs ) {
         super( context, attrs );
@@ -25,6 +26,11 @@ public class GraphicalBoardView extends ImageView {
         lilyPadShape.resize( width, height );
         lilyPad.setShape( lilyPadShape );
         lilyPad.getPaint().setColor( Color.GREEN );
+    }
+
+    public void updateFromBoard( Board b ) {
+        board = b;
+        invalidate();
     }
 
     protected void onDraw( Canvas c ) {

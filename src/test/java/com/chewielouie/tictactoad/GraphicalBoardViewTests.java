@@ -38,6 +38,30 @@ public class GraphicalBoardViewTests {
         ShadowImageView shadowV = Robolectric.shadowOf( g );
         assertTrue( shadowV.wasInvalidated() );
     }
+
+    @Test
+    public void gridIsUpdatedToMatchBoardSizeOnUpdateFromBoard() {
+        final int boardWidth = 5;
+        final int boardHeight = 8;
+        final Board board = mockery.mock( Board.class );
+        final Context context = mockery.mock( Context.class );
+        final AttributeSet attributeSet = mockery.mock( AttributeSet.class );
+        mockery.checking( new Expectations() {{
+            allowing( board ).width();
+            will( returnValue( boardWidth ) );
+            allowing( board ).height();
+            will( returnValue( boardHeight ) );
+            ignoring( board );
+            ignoring( context );
+            ignoring( attributeSet );
+        }});
+        GraphicalBoardView g = new GraphicalBoardView( context, attributeSet );
+
+        g.updateFromBoard( board );
+
+        assertEquals( boardWidth, g.grid().numberOfColumns() );
+        assertEquals( boardHeight, g.grid().numberOfRows() );
+    }
 }
 
 

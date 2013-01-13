@@ -30,6 +30,7 @@ public class GraphicalBoardView extends ImageView {
 
     public void updateFromBoard( Board b ) {
         board = b;
+        //grid = new OpenGridShape( board.width(), board.height() );
         invalidate();
     }
 

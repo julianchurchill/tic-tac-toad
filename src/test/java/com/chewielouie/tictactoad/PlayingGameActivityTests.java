@@ -50,6 +50,10 @@ public class PlayingGameActivityTests
         mockery.checking( new Expectations() {{
             allowing( board ).getContentAt( with( any( Coord.class ) ) );
             will( returnValue( Board.Piece.None ) );
+            allowing( board ).width();
+            will( returnValue( 3 ) );
+            allowing( board ).height();
+            will( returnValue( 3 ) );
         }});
 
         activity.displayBoard( board );
@@ -65,6 +69,10 @@ public class PlayingGameActivityTests
         mockery.checking( new Expectations() {{
             allowing( board ).getContentAt( with( any( Coord.class ) ) );
             will( returnValue( Board.Piece.Nought ) );
+            allowing( board ).width();
+            will( returnValue( 3 ) );
+            allowing( board ).height();
+            will( returnValue( 3 ) );
         }});
 
         activity.displayBoard( board );
@@ -80,6 +88,10 @@ public class PlayingGameActivityTests
         mockery.checking( new Expectations() {{
             allowing( board ).getContentAt( with( any( Coord.class ) ) );
             will( returnValue( Board.Piece.Cross ) );
+            allowing( board ).width();
+            will( returnValue( 3 ) );
+            allowing( board ).height();
+            will( returnValue( 3 ) );
         }});
 
         activity.displayBoard( board );

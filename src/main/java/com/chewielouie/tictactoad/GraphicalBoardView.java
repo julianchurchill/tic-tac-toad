@@ -47,19 +47,22 @@ public class GraphicalBoardView extends ImageView {
     private void drawBoardContent( Canvas c ) {
         BoardIterator iterator = board.iterator();
         for( ; iterator.hasNext(); iterator.next() )
-            new BoardCellPainter( c,
-                                  grid.cellBounds( iterator.coord() ) );
+            new BoardCellPainter( c, iterator.coord(), iterator.piece() );
     }
 
     class BoardCellPainter {
         Canvas canvas;
         Rect bounds;
 
-        public BoardCellPainter( Canvas c, Rect b ) {
+        public BoardCellPainter( Canvas c, Coord boardCoord,
+                Board.Piece piece ) {
             canvas = c;
-            bounds = b;
+            bounds = grid.cellBounds( boardCoord );
             drawLilyPad();
-            drawGreenFrog();
+            if( piece == Board.Piece.Nought )
+                drawBitmapInBounds( greenFrog() );
+            else if( piece == Board.Piece.Cross )
+                drawBitmapInBounds( brownFrog() );
         }
 
         private void drawLilyPad() {
@@ -67,15 +70,20 @@ public class GraphicalBoardView extends ImageView {
             lilyPad.draw( canvas );
         }
 
-        private void drawGreenFrog() {
-            canvas.drawBitmap( greenFrog().getBitmap(),
+        private void drawBitmapInBounds( BitmapDrawable b ) {
+            canvas.drawBitmap( b.getBitmap(),
                     bounds.left, bounds.top, null );
         }
-    }
 
-    private BitmapDrawable greenFrog() {
-        return (BitmapDrawable)context.getResources().
-                    getDrawable( R.drawable.green_frog );
+        private BitmapDrawable greenFrog() {
+            return (BitmapDrawable)context.getResources().
+                        getDrawable( R.drawable.green_frog );
+        }
+
+        private BitmapDrawable brownFrog() {
+            return (BitmapDrawable)context.getResources().
+                        getDrawable( R.drawable.brown_frog );
+        }
     }
 
     public OpenGridShape grid() {

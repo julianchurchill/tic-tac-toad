@@ -22,7 +22,10 @@ public class PlayingGameActivity extends Activity implements PlayGameView
     private final RendersView rendersView;
 
     public PlayingGameActivity() {
-        this.rendersView = new PlayGamePresenter( new NormalBoard(), this );
+        NormalBoard board = new NormalBoard();
+        board.setContentAt( new Coord( 1, 0 ), Board.Piece.Nought );
+        board.setContentAt( new Coord( 2, 0 ), Board.Piece.Cross );
+        this.rendersView = new PlayGamePresenter( board, this );
     }
 
     public PlayingGameActivity( RendersView p ) {

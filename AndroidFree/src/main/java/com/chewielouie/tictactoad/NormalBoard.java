@@ -1,12 +1,15 @@
 package com.chewielouie.tictactoad;
 
 import com.chewielouie.tictactoad.ProgrammerMistake;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NormalBoard implements Board {
     private final int WIDTH = 3;
     private final int HEIGHT = 3;
     private Board.Piece piece = Board.Piece.None;
     private Board.Piece[][] pieces;
+    private List<BoardListener> listeners = new ArrayList<BoardListener>();
 
     public NormalBoard() {
         pieces = new Board.Piece[WIDTH][HEIGHT];
@@ -29,6 +32,8 @@ public class NormalBoard implements Board {
 
     public void setContentAt( Coord c, Board.Piece p ) {
         pieces[c.x()][c.y()] = p;
+        for( BoardListener l : listeners )
+            l.boardChanged( this );
     }
 
     public Board.Piece getContentAt( Coord c ) {
@@ -38,6 +43,10 @@ public class NormalBoard implements Board {
             c.y() < 0 )
             throw new ProgrammerMistake( new ArrayIndexOutOfBoundsException() );
         return pieces[c.x()][c.y()];
+    }
+
+    public void addListener( BoardListener l ) {
+        listeners.add( l );
     }
 
     @Override

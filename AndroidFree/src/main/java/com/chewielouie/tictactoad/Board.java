@@ -7,4 +7,5 @@ public interface Board {
     public int height();
     public Piece getContentAt( Coord c );
     public BoardIterator iterator();
+    public void addListener( BoardListener l );
 }

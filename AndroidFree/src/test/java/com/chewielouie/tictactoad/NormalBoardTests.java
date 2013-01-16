@@ -2,9 +2,15 @@ package com.chewielouie.tictactoad;
 
 import static org.junit.Assert.*;
 
+import org.jmock.*;
+import org.jmock.integration.junit4.JMock;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
+@RunWith(JMock.class)
 public class NormalBoardTests extends BoardContract {
+
+    private Mockery mockery = new Mockery();
 
     protected Board createBoard() {
         return new NormalBoard();
@@ -89,6 +95,19 @@ public class NormalBoardTests extends BoardContract {
             if( iterator.coord().equals( test_coord ) == false )
                 assertEquals( emptyBoard.getContentAt( iterator.coord() ),
                               iterator.piece() );
+    }
+
+    @Test
+    public void should_notify_listeners_on_content_change() {
+        final NormalBoard board = new NormalBoard();
+        final BoardListener listener = mockery.mock( BoardListener.class );
+        board.addListener( listener );
+        mockery.checking( new Expectations() {{
+            oneOf( listener ).boardChanged( with( board ) );
+        }});
+
+        final Coord test_coord = new Coord( 1, 0 );
+        board.setContentAt( test_coord, Board.Piece.Nought );
     }
 
     @Test

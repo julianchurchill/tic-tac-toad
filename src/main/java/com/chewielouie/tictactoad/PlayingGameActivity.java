@@ -22,7 +22,7 @@ public class PlayingGameActivity extends Activity implements PlayGameView
     private final RendersView rendersView;
 
     public PlayingGameActivity() {
-        NormalBoard board = new NormalBoard();
+        board = new NormalBoard();
         board.setContentAt( new Coord( 1, 0 ), Board.Piece.Nought );
         board.setContentAt( new Coord( 2, 0 ), Board.Piece.Cross );
         this.rendersView = new PlayGamePresenter( board, this );
@@ -51,19 +51,18 @@ public class PlayingGameActivity extends Activity implements PlayGameView
             throw new ProgrammerMistake(
                 new IllegalArgumentException( "A null board is not displayable" ) );
 
-        board = b;
         TextView t = (TextView)findViewById( R.id.board );
-        t.setText( generateBoardText() );
+        t.setText( generateBoardText( b ) );
 
         final GraphicalBoardView v = (GraphicalBoardView)findViewById( R.id.graphical_board );
         v.updateFromBoard( b );
     }
 
-    private String generateBoardText() {
+    private String generateBoardText( Board b ) {
         StringBuilder text = new StringBuilder();
         for( int y = 0; y < boardSize; ++y ) {
             for( int x = 0; x < boardSize; ++x ) {
-                text.append( getTextRepresentationOfPoint( new Coord( x, y ) ) );
+                text.append( getTextRepresentationOfPoint( new Coord( x, y ), b ) );
                 if( x != lastBoardCoordinate )
                     text.append( BoardPointSeperator );
                 if( x == lastBoardCoordinate && y != lastBoardCoordinate )
@@ -73,10 +72,10 @@ public class PlayingGameActivity extends Activity implements PlayGameView
         return text.toString();
     }
 
-    public char getTextRepresentationOfPoint( Coord coord ) {
-        if( board.getContentAt( coord ) == Board.Piece.Nought )
+    public char getTextRepresentationOfPoint( Coord coord, Board b ) {
+        if( b.getContentAt( coord ) == Board.Piece.Nought )
             return NoughtBoardPoint;
-        else if( board.getContentAt( coord ) == Board.Piece.Cross )
+        else if( b.getContentAt( coord ) == Board.Piece.Cross )
             return CrossBoardPoint;
         return EmptyBoardPoint;
     }

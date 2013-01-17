@@ -20,6 +20,7 @@ public class PlayingGameActivity extends Activity implements PlayGameView
     private final char LineSeperator = '\n';
     private Board board = null;
     private final RendersView rendersView;
+    private Board.Piece nextPieceToPlay = Board.Piece.Nought;
 
     public PlayingGameActivity() {
         board = new NormalBoard();
@@ -82,6 +83,14 @@ public class PlayingGameActivity extends Activity implements PlayGameView
     }
 
     public void boardTouchEvent( Coord c ) {
-        board.setContentAt( c, Board.Piece.Nought );
+        board.setContentAt( c, nextPieceToPlay );
+        alternateNextToPlay();
+    }
+
+    private void alternateNextToPlay() {
+        if( nextPieceToPlay == Board.Piece.Nought )
+            nextPieceToPlay = Board.Piece.Cross;
+        else
+            nextPieceToPlay = Board.Piece.Nought;
     }
 }

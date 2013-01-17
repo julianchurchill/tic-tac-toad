@@ -143,9 +143,34 @@ public class PlayingGameActivityTests
         mockery.assertIsSatisfied();
     }
 
-    //@Test
-    //public void updates_board_when_touch_received_from_grid_with_alternating_pieces() {
+    @Test
+    public void updates_board_when_touch_received_from_grid_with_alternating_pieces() {
+        final RendersView rendersView = mockery.mock( RendersView.class );
+        final Board board = mockery.mock( Board.class );
+        final Sequence pieceAlternation = mockery.sequence( "piece alternation" );
+        mockery.checking( new Expectations() {{
+            oneOf( board ).setContentAt( with( any( Coord.class ) ),
+                                         with( equal( Board.Piece.Nought ) ) );
+            inSequence( pieceAlternation );
+            oneOf( board ).setContentAt( with( any( Coord.class ) ),
+                                         with( equal( Board.Piece.Cross ) ) );
+            inSequence( pieceAlternation );
+            oneOf( board ).setContentAt( with( any( Coord.class ) ),
+                                         with( equal( Board.Piece.Nought ) ) );
+            inSequence( pieceAlternation );
+        }});
+        PlayingGameActivity p = new PlayingGameActivity( rendersView, board );
+
+        p.boardTouchEvent( new Coord( 0, 0 ) );
+        p.boardTouchEvent( new Coord( 1, 1 ) );
+        p.boardTouchEvent( new Coord( 2, 2 ) );
+
+        mockery.assertIsSatisfied();
+    }
+
     //@Test
     //public void ignores_board_touch_from_grid_when_space_already_occupied() {
+    //@Test
+    //public void registers_for_touch_events_from_grid() {
 }
 

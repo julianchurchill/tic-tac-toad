@@ -133,6 +133,8 @@ public class PlayingGameActivityTests
         final RendersView rendersView = mockery.mock( RendersView.class );
         final Board board = mockery.mock( Board.class );
         mockery.checking( new Expectations() {{
+            allowing( board ).getContentAt( with( any( Coord.class )));
+            will( returnValue( Board.Piece.None ) );
             oneOf( board ).setContentAt( with( equal( new Coord( 1, 1 ) ) ),
                                          with( any( Board.Piece.class ) ) );
         }});
@@ -149,6 +151,8 @@ public class PlayingGameActivityTests
         final Board board = mockery.mock( Board.class );
         final Sequence pieceAlternation = mockery.sequence( "piece alternation" );
         mockery.checking( new Expectations() {{
+            allowing( board ).getContentAt( with( any( Coord.class )));
+            will( returnValue( Board.Piece.None ) );
             oneOf( board ).setContentAt( with( any( Coord.class ) ),
                                          with( equal( Board.Piece.Nought ) ) );
             inSequence( pieceAlternation );
@@ -168,8 +172,23 @@ public class PlayingGameActivityTests
         mockery.assertIsSatisfied();
     }
 
-    //@Test
-    //public void ignores_board_touch_from_grid_when_space_already_occupied() {
+    @Test
+    public void ignores_board_touch_from_grid_when_space_already_occupied() {
+        final RendersView rendersView = mockery.mock( RendersView.class );
+        final Board board = mockery.mock( Board.class );
+        mockery.checking( new Expectations() {{
+            allowing( board ).getContentAt( with( equal( new Coord( 0, 0 ))));
+            will( returnValue( Board.Piece.Nought ) );
+            never( board ).setContentAt( with( any( Coord.class ) ),
+                                         with( any( Board.Piece.class ) ) );
+        }});
+        PlayingGameActivity p = new PlayingGameActivity( rendersView, board );
+
+        p.boardTouchEvent( new Coord( 0, 0 ) );
+
+        mockery.assertIsSatisfied();
+    }
+
     //@Test
     //public void registers_for_touch_events_from_grid() {
 }

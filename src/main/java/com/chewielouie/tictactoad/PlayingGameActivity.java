@@ -83,8 +83,10 @@ public class PlayingGameActivity extends Activity implements PlayGameView
     }
 
     public void boardTouchEvent( Coord c ) {
-        board.setContentAt( c, nextPieceToPlay );
-        alternateNextToPlay();
+        if( board.getContentAt( c ) == Board.Piece.None ) {
+            board.setContentAt( c, nextPieceToPlay );
+            alternateNextToPlay();
+        }
     }
 
     private void alternateNextToPlay() {

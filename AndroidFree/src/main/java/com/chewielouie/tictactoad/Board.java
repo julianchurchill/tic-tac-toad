@@ -6,6 +6,7 @@ public interface Board {
     public int width();
     public int height();
     public Piece getContentAt( Coord c );
+    public void setContentAt( Coord c, Board.Piece p );
     public BoardIterator iterator();
     public void addListener( BoardListener l );
 }

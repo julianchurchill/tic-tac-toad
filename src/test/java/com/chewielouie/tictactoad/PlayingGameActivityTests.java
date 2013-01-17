@@ -111,11 +111,13 @@ public class PlayingGameActivityTests
     @Test
     public void rendersThePresenterOnResume() {
         final RendersView rendersView = mockery.mock( RendersView.class );
+        final Board board = mockery.mock( Board.class );
         mockery.checking( new Expectations() {{
             oneOf( rendersView ).render();
+            ignoring( board );
         }});
 
-        new PlayingGameActivity( rendersView ) {
+        new PlayingGameActivity( rendersView, board ) {
             // Override to make onResume() accessible for testing
             @Override
             public void onResume() {
@@ -125,5 +127,25 @@ public class PlayingGameActivityTests
 
         mockery.assertIsSatisfied();
     }
+
+    @Test
+    public void updates_board_when_touch_received_from_grid() {
+        final RendersView rendersView = mockery.mock( RendersView.class );
+        final Board board = mockery.mock( Board.class );
+        mockery.checking( new Expectations() {{
+            oneOf( board ).setContentAt( with( equal( new Coord( 1, 1 ) ) ),
+                                         with( any( Board.Piece.class ) ) );
+        }});
+        PlayingGameActivity p = new PlayingGameActivity( rendersView, board );
+
+        p.boardTouchEvent( new Coord( 1, 1 ) );
+
+        mockery.assertIsSatisfied();
+    }
+
+    //@Test
+    //public void updates_board_when_touch_received_from_grid_with_alternating_pieces() {
+    //@Test
+    //public void ignores_board_touch_from_grid_when_space_already_occupied() {
 }
 

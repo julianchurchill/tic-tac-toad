@@ -28,8 +28,9 @@ public class PlayingGameActivity extends Activity implements PlayGameView
         this.rendersView = new PlayGamePresenter( board, this );
     }
 
-    public PlayingGameActivity( RendersView p ) {
+    public PlayingGameActivity( RendersView p, Board b ) {
         this.rendersView = p;
+        this.board = b;
     }
 
     /** Called when the activity is first created. */
@@ -78,5 +79,9 @@ public class PlayingGameActivity extends Activity implements PlayGameView
         else if( b.getContentAt( coord ) == Board.Piece.Cross )
             return CrossBoardPoint;
         return EmptyBoardPoint;
+    }
+
+    public void boardTouchEvent( Coord c ) {
+        board.setContentAt( c, Board.Piece.Nought );
     }
 }

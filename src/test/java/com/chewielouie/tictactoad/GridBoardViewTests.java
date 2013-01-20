@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import com.chewielouie.tictactoad.GridBoardView;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 import com.xtremelabs.robolectric.Robolectric;
 import com.xtremelabs.robolectric.shadows.ShadowImageView;
@@ -62,6 +63,37 @@ public class GridBoardViewTests {
         assertEquals( boardWidth, g.grid().numberOfColumns() );
         assertEquals( boardHeight, g.grid().numberOfRows() );
     }
+
+    @Test
+    public void notifies_listeners_for_touch_events() {
+        final Context context = null;
+        final AttributeSet attributeSet = null;
+        final BoardTouchListener listener = mockery.mock( BoardTouchListener.class );
+        mockery.checking( new Expectations() {{
+            oneOf( listener ).boardTouchEvent( with( any( Coord.class ) ) );
+        }});
+        GridBoardView g = new GridBoardView( context, attributeSet );
+        g.addListener( listener );
+
+        long downTime = 0;
+        long eventTime = 0;
+        int action = 0;
+        float x = 0;
+        float y = 0;
+        int metaState = 0;
+        g.dispatchTouchEvent( MotionEvent.obtain(
+                    downTime,
+                    eventTime,
+                    action,
+                    x,
+                    y,
+                    metaState ) );
+
+        mockery.assertIsSatisfied();
+    }
+
+    //@Test
+    //public void converts_screen_coords_to_board_coords_for_notify_of_touch_event() {
 }
 
 

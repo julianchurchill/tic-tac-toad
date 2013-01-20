@@ -2,7 +2,7 @@ package com.chewielouie.tictactoad;
 
 import static org.junit.Assert.*;
 
-import com.chewielouie.tictactoad.GraphicalBoardView;
+import com.chewielouie.tictactoad.GridBoardView;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
@@ -15,7 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(RobolectricTestRunner.class)
-public class GraphicalBoardViewTests {
+public class GridBoardViewTests {
 
     private Mockery mockery = new Mockery() {{
         setImposteriser(ClassImposteriser.INSTANCE);
@@ -31,7 +31,7 @@ public class GraphicalBoardViewTests {
             ignoring( context );
             ignoring( attributeSet );
         }});
-        GraphicalBoardView g = new GraphicalBoardView( context, attributeSet );
+        GridBoardView g = new GridBoardView( context, attributeSet );
 
         g.updateFromBoard( board );
 
@@ -55,7 +55,7 @@ public class GraphicalBoardViewTests {
             ignoring( context );
             ignoring( attributeSet );
         }});
-        GraphicalBoardView g = new GraphicalBoardView( context, attributeSet );
+        GridBoardView g = new GridBoardView( context, attributeSet );
 
         g.updateFromBoard( board );
 

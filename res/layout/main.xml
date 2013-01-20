@@ -16,7 +16,7 @@
     android:layout_height="wrap_content"
     android:text="Your turn..."
     />
-<com.chewielouie.tictactoad.GraphicalBoardView
+<com.chewielouie.tictactoad.GridBoardView
     android:id="@+id/graphical_board"
     android:layout_height="fill_parent"
     android:layout_width="fill_parent"/>

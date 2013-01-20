@@ -11,14 +11,14 @@ import android.graphics.drawable.shapes.OvalShape;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-public class GraphicalBoardView extends ImageView implements BoardTouchGenerator {
+public class GridBoardView extends ImageView implements BoardTouchGenerator {
     private OpenGridShape grid = new OpenGridShape( 3, 3 );
     private ShapeDrawable lilyPad = new ShapeDrawable();
     private BitmapDrawable greenFrog = null;
     private Board board = new NullBoard();
     private Context context;
 
-    public GraphicalBoardView( Context context, AttributeSet attrs ) {
+    public GridBoardView( Context context, AttributeSet attrs ) {
         super( context, attrs );
         this.context = context;
         createDrawableForEmptyBoardPoint();

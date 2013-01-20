@@ -68,7 +68,7 @@ public class PlayingGameActivity extends Activity implements PlayGameView, Board
         TextView t = (TextView)findViewById( R.id.board );
         t.setText( generateBoardText( b ) );
 
-        final GraphicalBoardView v = (GraphicalBoardView)findViewById( R.id.graphical_board );
+        final GridBoardView v = (GridBoardView)findViewById( R.id.graphical_board );
         v.updateFromBoard( b );
     }
 

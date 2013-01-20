@@ -12,6 +12,7 @@ Backlog
 - React to user input to place alternate noughts and crosses until the board is full
   - PlayingGameActivity needs to register for and receive board touch events from the graphical_board
   - GraphicalBoardView needs to send board touch events to listeners, converting screen coordinates to board grid coordinates (use dispatchTouchEvent() to fake an event into the GraphicalBoardView)
+- Remove text view from PlayingGameActivity
 
 - Human vs random computer
 - Human vs medium computer

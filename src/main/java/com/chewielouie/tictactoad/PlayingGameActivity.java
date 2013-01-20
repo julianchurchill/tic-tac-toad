@@ -9,7 +9,7 @@ import java.lang.IllegalArgumentException;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class PlayingGameActivity extends Activity implements PlayGameView
+public class PlayingGameActivity extends Activity implements PlayGameView, BoardTouchListener
 {
     private final int boardSize = 3;
     private final int lastBoardCoordinate = boardSize-1;
@@ -21,6 +21,7 @@ public class PlayingGameActivity extends Activity implements PlayGameView
     private Board board = null;
     private final RendersView rendersView;
     private Board.Piece nextPieceToPlay = Board.Piece.Nought;
+    private BoardTouchGenerator boardTouchGenerator = null;
 
     public PlayingGameActivity() {
         board = new NormalBoard();
@@ -34,12 +35,23 @@ public class PlayingGameActivity extends Activity implements PlayGameView
         this.board = b;
     }
 
+    public PlayingGameActivity( RendersView p, Board b,
+            BoardTouchGenerator t ) {
+        this.rendersView = p;
+        this.board = b;
+        this.boardTouchGenerator = t;
+    }
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        if( boardTouchGenerator == null )
+            boardTouchGenerator =
+                (BoardTouchGenerator)findViewById( R.id.graphical_board );
+        boardTouchGenerator.addListener( this );
     }
 
     @Override
@@ -96,3 +108,4 @@ public class PlayingGameActivity extends Activity implements PlayGameView
             nextPieceToPlay = Board.Piece.Nought;
     }
 }
+

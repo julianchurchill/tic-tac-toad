@@ -189,7 +189,22 @@ public class PlayingGameActivityTests
         mockery.assertIsSatisfied();
     }
 
-    //@Test
-    //public void registers_for_touch_events_from_grid() {
+    @Test
+    public void registers_for_touch_events_from_grid() {
+        final RendersView rendersView = null;
+        final Board board = null;
+        final BoardTouchGenerator boardTouchGen =
+            mockery.mock( BoardTouchGenerator.class );
+        final PlayingGameActivity p = new PlayingGameActivity(
+                rendersView, board, boardTouchGen );
+
+        mockery.checking( new Expectations() {{
+            oneOf( boardTouchGen ).addListener( p );
+        }});
+
+        p.onCreate( null );
+
+        mockery.assertIsSatisfied();
+    }
 }
 

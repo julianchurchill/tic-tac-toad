@@ -80,8 +80,48 @@ public class GridBoardViewTests {
         mockery.assertIsSatisfied();
     }
 
-    //@Test
-    //public void converts_screen_coords_to_board_coords_for_notify_of_touch_event() {
+    @Test
+    public void converts_screen_coords_to_board_coords_for_notify_of_touch_event_at_origin() {
+        final BoardTouchListener listener = mockery.mock( BoardTouchListener.class );
+        mockery.checking( new Expectations() {{
+            oneOf( listener ).boardTouchEvent( with( new Coord( 0, 0 ) ) );
+        }});
+        GridBoardView g = new GridBoardView( null, null );
+        g.addListener( listener );
+
+        long downTime = 0;
+        long eventTime = 0;
+        int action = 0;
+        float x = 0;
+        float y = 0;
+        int metaState = 0;
+        g.dispatchTouchEvent( MotionEvent.obtain( downTime, eventTime, action,
+                    x, y, metaState ) );
+
+        mockery.assertIsSatisfied();
+    }
+
+    @Test
+    public void converts_screen_coords_to_board_coords_for_notify_of_touch_event_at_non_origin() {
+        final Coord boardCoord = new Coord( 1, 2 );
+        final BoardTouchListener listener = mockery.mock( BoardTouchListener.class );
+        mockery.checking( new Expectations() {{
+            oneOf( listener ).boardTouchEvent( with( boardCoord ) );
+        }});
+        GridBoardView g = new GridBoardView( null, null );
+        g.addListener( listener );
+
+        long downTime = 0;
+        long eventTime = 0;
+        int action = 0;
+        float x = g.grid().cellWidth() * boardCoord.x();
+        float y = g.grid().cellHeight() * boardCoord.y();
+        int metaState = 0;
+        g.dispatchTouchEvent( MotionEvent.obtain( downTime, eventTime, action,
+                    x, y, metaState ) );
+
+        mockery.assertIsSatisfied();
+    }
 }
 
 

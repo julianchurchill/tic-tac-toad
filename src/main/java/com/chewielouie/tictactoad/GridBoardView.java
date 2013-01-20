@@ -11,7 +11,7 @@ import android.graphics.drawable.shapes.OvalShape;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-public class GridBoardView extends ImageView implements BoardTouchGenerator {
+public class GridBoardView extends ImageView implements BoardTouchGenerator, GraphicalBoardView {
     private OpenGridShape grid = new OpenGridShape( 3, 3 );
     private ShapeDrawable lilyPad = new ShapeDrawable();
     private BitmapDrawable greenFrog = null;

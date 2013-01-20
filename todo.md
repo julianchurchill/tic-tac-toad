@@ -6,8 +6,6 @@ TODO
 Backlog
 =======
 
-- Extract interface updateFromBoard from GraphicalBoardView.
-- Rename original GraphicalBoardView to GridBoardView, keeping old name as interface.
 - Add test to check that PlayingGameActivity calls updateFromBoard on a GraphicalBoardView when displayBoard called.
 - Remove text view and tests from PlayingGameActivity
 

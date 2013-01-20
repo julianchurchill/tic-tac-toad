@@ -55,13 +55,18 @@ public class GridBoardViewTests {
     }
 
     @Test
-    public void notifies_listeners_for_touch_events() {
-        final BoardTouchListener listener = mockery.mock( BoardTouchListener.class );
+    public void notifies_all_listeners_for_touch_events() {
+        final BoardTouchListener listener1 =
+            mockery.mock( BoardTouchListener.class, "BTL1" );
+        final BoardTouchListener listener2 =
+            mockery.mock( BoardTouchListener.class, "BTL2" );
         mockery.checking( new Expectations() {{
-            oneOf( listener ).boardTouchEvent( with( any( Coord.class ) ) );
+            oneOf( listener1 ).boardTouchEvent( with( any( Coord.class ) ) );
+            oneOf( listener2 ).boardTouchEvent( with( any( Coord.class ) ) );
         }});
         GridBoardView g = new GridBoardView( null, null );
-        g.addListener( listener );
+        g.addListener( listener1 );
+        g.addListener( listener2 );
 
         long downTime = 0;
         long eventTime = 0;

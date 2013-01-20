@@ -11,6 +11,8 @@ import android.graphics.drawable.shapes.OvalShape;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GridBoardView extends ImageView implements BoardTouchGenerator, GraphicalBoardView {
     private OpenGridShape grid = new OpenGridShape( 3, 3 );
@@ -18,7 +20,8 @@ public class GridBoardView extends ImageView implements BoardTouchGenerator, Gra
     private BitmapDrawable greenFrog = null;
     private Board board = new NullBoard();
     private Context context;
-    private BoardTouchListener listener = null;
+    private List<BoardTouchListener> listeners =
+        new ArrayList<BoardTouchListener>();
 
     public GridBoardView( Context context, AttributeSet attrs ) {
         super( context, attrs );
@@ -93,12 +96,13 @@ public class GridBoardView extends ImageView implements BoardTouchGenerator, Gra
     }
 
     public void addListener( BoardTouchListener l ) {
-        listener = l;
+        listeners.add( l );
     }
 
     @Override
     public boolean dispatchTouchEvent( MotionEvent e ) {
-        listener.boardTouchEvent( new Coord( 0, 0 ) );
+        for( BoardTouchListener l : listeners )
+            l.boardTouchEvent( new Coord( 0, 0 ) );
         return super.dispatchTouchEvent( e );
     }
 }

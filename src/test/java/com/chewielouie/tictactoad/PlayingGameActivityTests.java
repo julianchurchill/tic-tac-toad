@@ -44,63 +44,6 @@ public class PlayingGameActivityTests
     }
 
     @Test
-    public void drawsAnEmptyBoard() {
-        PlayingGameActivity activity = createActivity();
-        final Board board = mockery.mock( Board.class );
-        mockery.checking( new Expectations() {{
-            allowing( board ).getContentAt( with( any( Coord.class ) ) );
-            will( returnValue( Board.Piece.None ) );
-            allowing( board ).width();
-            will( returnValue( 3 ) );
-            allowing( board ).height();
-            will( returnValue( 3 ) );
-        }});
-
-        activity.displayBoard( board );
-
-        final TextView t = (TextView)activity.findViewById( R.id.board );
-        assertEquals( ".|.|.\n.|.|.\n.|.|.", t.getText().toString() );
-    }
-
-    @Test
-    public void drawsABoardFullOfNoughtsCorrectly() {
-        PlayingGameActivity activity = createActivity();
-        final Board board = mockery.mock( Board.class );
-        mockery.checking( new Expectations() {{
-            allowing( board ).getContentAt( with( any( Coord.class ) ) );
-            will( returnValue( Board.Piece.Nought ) );
-            allowing( board ).width();
-            will( returnValue( 3 ) );
-            allowing( board ).height();
-            will( returnValue( 3 ) );
-        }});
-
-        activity.displayBoard( board );
-
-        final TextView t = (TextView)activity.findViewById( R.id.board );
-        assertEquals( "O|O|O\nO|O|O\nO|O|O", t.getText().toString() );
-    }
-
-    @Test
-    public void drawsABoardFullOfCrossesCorrectly() {
-        PlayingGameActivity activity = createActivity();
-        final Board board = mockery.mock( Board.class );
-        mockery.checking( new Expectations() {{
-            allowing( board ).getContentAt( with( any( Coord.class ) ) );
-            will( returnValue( Board.Piece.Cross ) );
-            allowing( board ).width();
-            will( returnValue( 3 ) );
-            allowing( board ).height();
-            will( returnValue( 3 ) );
-        }});
-
-        activity.displayBoard( board );
-
-        final TextView t = (TextView)activity.findViewById( R.id.board );
-        assertEquals( "X|X|X\nX|X|X\nX|X|X", t.getText().toString() );
-    }
-
-    @Test
     public void showsTurnPrompt() {
         PlayingGameActivity activity = createActivity();
 

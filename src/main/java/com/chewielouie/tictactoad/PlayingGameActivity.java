@@ -19,9 +19,10 @@ public class PlayingGameActivity extends Activity implements PlayGameView, Board
     private final char BoardPointSeperator = '|';
     private final char LineSeperator = '\n';
     private Board board = null;
-    private final RendersView rendersView;
+    private RendersView rendersView = null;
     private Board.Piece nextPieceToPlay = Board.Piece.Nought;
     private BoardTouchGenerator boardTouchGenerator = null;
+    private GraphicalBoardView graphicalBoardView = null;
 
     public PlayingGameActivity() {
         board = new NormalBoard();
@@ -35,11 +36,14 @@ public class PlayingGameActivity extends Activity implements PlayGameView, Board
         this.board = b;
     }
 
-    public PlayingGameActivity( RendersView p, Board b,
-            BoardTouchGenerator t ) {
-        this.rendersView = p;
-        this.board = b;
+    public PlayingGameActivity( BoardTouchGenerator t ) {
+        super();
         this.boardTouchGenerator = t;
+    }
+
+    public PlayingGameActivity( GraphicalBoardView g ) {
+        super();
+        this.graphicalBoardView = g;
     }
 
     /** Called when the activity is first created. */
@@ -52,6 +56,9 @@ public class PlayingGameActivity extends Activity implements PlayGameView, Board
             boardTouchGenerator =
                 (BoardTouchGenerator)findViewById( R.id.graphical_board );
         boardTouchGenerator.addListener( this );
+        if( graphicalBoardView == null )
+            graphicalBoardView =
+                (GraphicalBoardView)findViewById( R.id.graphical_board );
     }
 
     @Override
@@ -68,8 +75,7 @@ public class PlayingGameActivity extends Activity implements PlayGameView, Board
         TextView t = (TextView)findViewById( R.id.board );
         t.setText( generateBoardText( b ) );
 
-        final GridBoardView v = (GridBoardView)findViewById( R.id.graphical_board );
-        v.updateFromBoard( b );
+        graphicalBoardView.updateFromBoard( b );
     }
 
     private String generateBoardText( Board b ) {

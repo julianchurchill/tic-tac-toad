@@ -6,7 +6,6 @@ TODO
 Backlog
 =======
 
-- Add test to check that PlayingGameActivity calls updateFromBoard on a GraphicalBoardView when displayBoard called.
 - Remove text view and tests from PlayingGameActivity
 
 - React to user input to place alternate noughts and crosses until the board is full

@@ -191,18 +191,34 @@ public class PlayingGameActivityTests
 
     @Test
     public void registers_for_touch_events_from_grid() {
-        final RendersView rendersView = null;
-        final Board board = null;
         final BoardTouchGenerator boardTouchGen =
             mockery.mock( BoardTouchGenerator.class );
-        final PlayingGameActivity p = new PlayingGameActivity(
-                rendersView, board, boardTouchGen );
+        final PlayingGameActivity p = new PlayingGameActivity( boardTouchGen );
 
         mockery.checking( new Expectations() {{
             oneOf( boardTouchGen ).addListener( p );
         }});
 
         p.onCreate( null );
+
+        mockery.assertIsSatisfied();
+    }
+
+    @Test
+    public void updates_graphical_board_when_displaying() {
+        final Board board = mockery.mock( Board.class );
+        final GraphicalBoardView graphicalBoardView =
+            mockery.mock( GraphicalBoardView.class );
+        final PlayingGameActivity p =
+            new PlayingGameActivity( graphicalBoardView );
+        p.onCreate( null );
+
+        mockery.checking( new Expectations() {{
+            ignoring( board );
+            oneOf( graphicalBoardView ).updateFromBoard( board );
+        }});
+
+        p.displayBoard( board );
 
         mockery.assertIsSatisfied();
     }

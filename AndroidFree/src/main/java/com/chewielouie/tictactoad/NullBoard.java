@@ -15,6 +15,9 @@ public class NullBoard implements Board {
         return Board.Piece.None;
     }
 
+    public void setContentAt( Coord c, Board.Piece p ) {
+    }
+
     public BoardIterator iterator() {
         return new BoardIterator() {
             public void next() {}
@@ -22,6 +25,9 @@ public class NullBoard implements Board {
             public Board.Piece piece() { return Board.Piece.None; }
             public Coord coord() { return new Coord( 0, 0 ); }
         };
+    }
+
+    public void addListener( BoardListener l ) {
     }
 }
 

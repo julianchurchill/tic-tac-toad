@@ -7,8 +7,12 @@ Backlog
 =======
 
 - React to user input to place alternate noughts and crosses until the board is full
-  - PlayingGameActivity needs to register for and receive board touch events from the graphical_board
-  - GridBoardView needs to send board touch events to listeners, converting screen coordinates to board grid coordinates (use dispatchTouchEvent() to fake an event into the GridBoardView)
+  - Ignore off-grid touch events that are still in the GridBoardView, currently throws a ProgrammerException when the PlayingGameActivity tries to read the coordinate from the Board.
+
+- Detect winning board and end the game
+  - Declare who won (change 'Your turn' to 'Green won!' or 'Brown won!')
+  - Stop any further pieces being placed
+  - Ask if a new game should be started
 
 - Human vs random computer
 - Human vs medium computer

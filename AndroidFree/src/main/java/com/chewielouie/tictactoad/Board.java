@@ -9,4 +9,5 @@ public interface Board {
     public void setContentAt( Coord c, Board.Piece p );
     public BoardIterator iterator();
     public void addListener( BoardListener l );
+    public Piece whoHasWon();
 }

@@ -8,8 +8,8 @@ Backlog
 
 - Detect completed board and end the game:
   - Declare who won:
-    - Presenter must ask model if anyone has won upon board content changing. Also must check for full board plus no win == draw
-    - Presenter must tell view upon win/draw
+    - Presenter must check for full board plus no win == draw
+    - Presenter must tell view upon draw
     - View must show to user win or draw message, change 'Your turn' to 'Green won!' or 'Brown won!'
   - Stop any further pieces being placed:
     - When presenter detects win/draw lock the board

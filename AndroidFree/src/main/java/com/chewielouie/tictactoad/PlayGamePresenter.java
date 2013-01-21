@@ -15,6 +15,9 @@ class PlayGamePresenter implements RendersView, BoardListener {
     }
 
     public void boardChanged( Board b ) {
+        Board.Piece winner = b.whoHasWon();
+        if( winner != Board.Piece.None )
+            view.gameWonBy( winner );
         render();
     }
 }

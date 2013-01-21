@@ -42,7 +42,38 @@ public class PlayGamePresenterTests {
         final Board board = mockery.mock( Board.class );
         mockery.checking( new Expectations() {{
             oneOf( view ).displayBoard( board );
+            ignoring( view );
             ignoring( board );
+        }});
+        PlayGamePresenter p = new PlayGamePresenter( board, view );
+
+        p.boardChanged( board );
+    }
+
+    @Test
+    public void when_board_changes_asks_board_if_anyone_has_won_yet() {
+        final PlayGameView view = mockery.mock( PlayGameView.class );
+        final Board board = mockery.mock( Board.class );
+        mockery.checking( new Expectations() {{
+            oneOf( board ).whoHasWon();
+            ignoring( board );
+            ignoring( view );
+        }});
+        PlayGamePresenter p = new PlayGamePresenter( board, view );
+
+        p.boardChanged( board );
+    }
+
+    @Test
+    public void tells_view_of_winner_when_someone_wins() {
+        final PlayGameView view = mockery.mock( PlayGameView.class );
+        final Board board = mockery.mock( Board.class );
+        mockery.checking( new Expectations() {{
+            allowing( board ).whoHasWon();
+            will( returnValue( Board.Piece.Nought ) );
+            ignoring( board );
+            oneOf( view ).gameWonBy( Board.Piece.Nought );
+            ignoring( view );
         }});
         PlayGamePresenter p = new PlayGamePresenter( board, view );
 

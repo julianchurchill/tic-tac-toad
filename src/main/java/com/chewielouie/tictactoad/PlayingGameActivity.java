@@ -80,5 +80,8 @@ public class PlayingGameActivity extends Activity implements PlayGameView, Board
         else
             nextPieceToPlay = Board.Piece.Nought;
     }
+
+    public void gameWonBy( Board.Piece p ) {
+    }
 }
 

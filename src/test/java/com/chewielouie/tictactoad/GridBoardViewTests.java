@@ -122,6 +122,27 @@ public class GridBoardViewTests {
 
         mockery.assertIsSatisfied();
     }
+
+    @Test
+    public void ignore_off_grid_touch_events() {
+        final BoardTouchListener listener = mockery.mock( BoardTouchListener.class );
+        mockery.checking( new Expectations() {{
+            never( listener ).boardTouchEvent( with( any( Coord.class ) ) );
+        }});
+        GridBoardView g = new GridBoardView( null, null );
+        g.addListener( listener );
+
+        long downTime = 0;
+        long eventTime = 0;
+        int action = 0;
+        float x = g.grid().numberOfColumns() * g.grid().cellWidth();
+        float y = 0;
+        int metaState = 0;
+        g.dispatchTouchEvent( MotionEvent.obtain( downTime, eventTime, action,
+                    x, y, metaState ) );
+
+        mockery.assertIsSatisfied();
+    }
 }
 
 

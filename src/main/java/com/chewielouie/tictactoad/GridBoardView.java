@@ -101,8 +101,11 @@ public class GridBoardView extends ImageView implements BoardTouchGenerator, Gra
 
     @Override
     public boolean dispatchTouchEvent( MotionEvent e ) {
-        for( BoardTouchListener l : listeners )
-            l.boardTouchEvent( convertMotionEventToBoardCoord( e ) );
+        float x_limit = grid().numberOfColumns() * grid().cellWidth();
+        float y_limit = grid().numberOfRows() * grid().cellHeight();
+        if( e.getX() < x_limit && e.getY() < y_limit )
+            for( BoardTouchListener l : listeners )
+                l.boardTouchEvent( convertMotionEventToBoardCoord( e ) );
         return super.dispatchTouchEvent( e );
     }
 

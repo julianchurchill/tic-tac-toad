@@ -29,5 +29,9 @@ public class NullBoard implements Board {
 
     public void addListener( BoardListener l ) {
     }
+
+    public Piece whoHasWon() {
+        return Piece.None;
+    }
 }
 

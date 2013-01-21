@@ -155,5 +155,80 @@ public class NormalBoardTests extends BoardContract {
 
         assertNotEquals( board1.hashCode(), board2.hashCode() );
     }
+
+    @Test
+    public void recognises_horizontal_winning_board() {
+        final NormalBoard top = new NormalBoard();
+        top.setContentAt( new Coord( 0, 0 ), Board.Piece.Nought );
+        top.setContentAt( new Coord( 1, 0 ), Board.Piece.Nought );
+        top.setContentAt( new Coord( 2, 0 ), Board.Piece.Nought );
+        assertEquals( Board.Piece.Nought, top.whoHasWon() );
+
+        final NormalBoard middle = new NormalBoard();
+        middle.setContentAt( new Coord( 0, 1 ), Board.Piece.Nought );
+        middle.setContentAt( new Coord( 1, 1 ), Board.Piece.Nought );
+        middle.setContentAt( new Coord( 2, 1 ), Board.Piece.Nought );
+        assertEquals( Board.Piece.Nought, middle.whoHasWon() );
+
+        final NormalBoard bottom = new NormalBoard();
+        bottom.setContentAt( new Coord( 0, 2 ), Board.Piece.Nought );
+        bottom.setContentAt( new Coord( 1, 2 ), Board.Piece.Nought );
+        bottom.setContentAt( new Coord( 2, 2 ), Board.Piece.Nought );
+        assertEquals( Board.Piece.Nought, bottom.whoHasWon() );
+    }
+
+    @Test
+    public void recognises_vertical_winning_board() {
+        final NormalBoard left = new NormalBoard();
+        left.setContentAt( new Coord( 0, 0 ), Board.Piece.Nought );
+        left.setContentAt( new Coord( 0, 1 ), Board.Piece.Nought );
+        left.setContentAt( new Coord( 0, 2 ), Board.Piece.Nought );
+        assertEquals( Board.Piece.Nought, left.whoHasWon() );
+
+        final NormalBoard middle = new NormalBoard();
+        middle.setContentAt( new Coord( 1, 0 ), Board.Piece.Nought );
+        middle.setContentAt( new Coord( 1, 1 ), Board.Piece.Nought );
+        middle.setContentAt( new Coord( 1, 2 ), Board.Piece.Nought );
+        assertEquals( Board.Piece.Nought, middle.whoHasWon() );
+
+        final NormalBoard right = new NormalBoard();
+        right.setContentAt( new Coord( 2, 0 ), Board.Piece.Nought );
+        right.setContentAt( new Coord( 2, 1 ), Board.Piece.Nought );
+        right.setContentAt( new Coord( 2, 2 ), Board.Piece.Nought );
+        assertEquals( Board.Piece.Nought, right.whoHasWon() );
+    }
+
+    @Test
+    public void recognises_diagonal_winning_board() {
+        final NormalBoard leftToRight = new NormalBoard();
+        leftToRight.setContentAt( new Coord( 0, 0 ), Board.Piece.Nought );
+        leftToRight.setContentAt( new Coord( 1, 1 ), Board.Piece.Nought );
+        leftToRight.setContentAt( new Coord( 2, 2 ), Board.Piece.Nought );
+        assertEquals( Board.Piece.Nought, leftToRight.whoHasWon() );
+
+        final NormalBoard rightToLeft = new NormalBoard();
+        rightToLeft.setContentAt( new Coord( 2, 0 ), Board.Piece.Nought );
+        rightToLeft.setContentAt( new Coord( 1, 1 ), Board.Piece.Nought );
+        rightToLeft.setContentAt( new Coord( 0, 2 ), Board.Piece.Nought );
+        assertEquals( Board.Piece.Nought, rightToLeft.whoHasWon() );
+    }
+
+    @Test
+    public void recognises_winning_board_for_crosses() {
+        final NormalBoard board = new NormalBoard();
+        board.setContentAt( new Coord( 0, 0 ), Board.Piece.Cross );
+        board.setContentAt( new Coord( 1, 1 ), Board.Piece.Cross );
+        board.setContentAt( new Coord( 2, 2 ), Board.Piece.Cross );
+        assertEquals( Board.Piece.Cross, board.whoHasWon() );
+    }
+
+    @Test
+    public void recognises_losing_board() {
+        final NormalBoard board = new NormalBoard();
+        assertEquals( Board.Piece.None, board.whoHasWon() );
+
+        board.setContentAt( new Coord( 1, 0 ), Board.Piece.Nought );
+        assertEquals( Board.Piece.None, board.whoHasWon() );
+    }
 }
 

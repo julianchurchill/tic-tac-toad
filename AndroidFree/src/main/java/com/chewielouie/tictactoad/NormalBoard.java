@@ -70,4 +70,72 @@ public class NormalBoard implements Board {
                 result = prime * result + pieces[x][y].hashCode();
         return result;
     }
+
+    public Board.Piece whoHasWon() {
+        if( new WinChecker( Piece.Nought ).hasWon() )
+            return Piece.Nought;
+        if( new WinChecker( Piece.Cross ).hasWon() )
+            return Piece.Cross;
+        return Piece.None;
+    }
+
+    class WinChecker {
+        final Piece candidate;
+        public WinChecker( Piece p ) {
+            candidate = p;
+        }
+
+        public boolean hasWon() {
+            return hasCompleteRow() ||
+                   hasCompleteColumn() ||
+                   hasCompleteDiagonal();
+        }
+
+        private boolean hasCompleteDiagonal() {
+            return hasCompleteLeftToRightDiagonal() ||
+                   hasCompleteRightToLeftDiagonal();
+        }
+
+        private boolean hasCompleteLeftToRightDiagonal() {
+            for( int step = 0; step < width(); ++step )
+                if( pieces[step][step] != candidate )
+                    return false;
+            return true;
+        }
+
+        private boolean hasCompleteRightToLeftDiagonal() {
+            for( int step = 0; step < height(); ++step )
+                if( pieces[width()-1-step][step] != candidate )
+                    return false;
+            return true;
+        }
+
+        private boolean hasCompleteRow() {
+            for( int row = 0; row < height(); ++row )
+                if( rowIsComplete( row ) )
+                    return true;
+            return false;
+        }
+
+        private boolean rowIsComplete( int row ) {
+            for( int column = 0; column < width(); ++column )
+                if( pieces[column][row] != candidate )
+                    return false;
+            return true;
+        }
+
+        private boolean hasCompleteColumn() {
+            for( int column = 0; column < width(); ++column )
+                if( columnIsComplete( column ) )
+                    return true;
+            return false;
+        }
+
+        private boolean columnIsComplete( int column ) {
+            for( int row = 0; row < height(); ++row )
+                if( pieces[column][row] != candidate )
+                    return false;
+            return true;
+        }
+    }
 }

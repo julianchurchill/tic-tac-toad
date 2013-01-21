@@ -6,10 +6,19 @@ TODO
 Backlog
 =======
 
-- Detect winning board and end the game
-  - Declare who won (change 'Your turn' to 'Green won!' or 'Brown won!')
-  - Stop any further pieces being placed
-  - Ask if a new game should be started
+- Detect completed board and end the game:
+  - Declare who won:
+    - Presenter must ask model if anyone has won upon board content changing. Also must check for full board plus no win == draw
+    - Presenter must tell view upon win/draw
+    - View must show to user win or draw message, change 'Your turn' to 'Green won!' or 'Brown won!'
+  - Stop any further pieces being placed:
+    - When presenter detects win/draw lock the board
+    - Board must ignore content setting when locked
+  - Ask if a new game should be started:
+    - View should show 'New game?' button when told to show win/draw message
+    - View must call new game on presenter when user presses new game button
+    - View must hide new game button when user presses it
+    - Presenter must clear and unlock board on new game. Also tell view to render after clear.
 
 - Human vs random computer
 - Human vs medium computer

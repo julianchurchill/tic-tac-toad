@@ -83,5 +83,8 @@ public class PlayingGameActivity extends Activity implements PlayGameView, Board
 
     public void gameWonBy( Board.Piece p ) {
     }
+
+    public void gameDrawn() {
+    }
 }
 

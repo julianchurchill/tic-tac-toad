@@ -18,6 +18,16 @@ class PlayGamePresenter implements RendersView, BoardListener {
         Board.Piece winner = b.whoHasWon();
         if( winner != Board.Piece.None )
             view.gameWonBy( winner );
+        else if( drawnGame( b ) )
+            view.gameDrawn();
         render();
+    }
+
+    private boolean drawnGame( Board b ) {
+        BoardIterator iter = b.iterator();
+        for( ; iter.hasNext() ; iter.next() )
+            if( iter.piece() == Board.Piece.None )
+                return false;
+        return true;
     }
 }

@@ -79,5 +79,61 @@ public class PlayGamePresenterTests {
 
         p.boardChanged( board );
     }
+
+    @Test
+    public void tells_view_of_draw_when_board_is_full() {
+        final PlayGameView view = mockery.mock( PlayGameView.class );
+        final Board board = mockery.mock( Board.class );
+        final BoardIterator boardIterator = mockery.mock( BoardIterator.class );
+        mockery.checking( new Expectations() {{
+            allowing( board ).whoHasWon();
+            will( returnValue( Board.Piece.None ) );
+            allowing( board ).iterator();
+            will( returnValue( boardIterator) );
+            ignoring( board );
+            allowing( boardIterator ).hasNext();
+            will( onConsecutiveCalls(
+                  returnValue( true ),
+                  returnValue( true ),
+                  returnValue( true ),
+                  returnValue( false ) ) );
+            allowing( boardIterator ).piece();
+            will( returnValue( Board.Piece.Nought ) );
+            ignoring( boardIterator );
+            oneOf( view ).gameDrawn();
+            ignoring( view );
+        }});
+        PlayGamePresenter p = new PlayGamePresenter( board, view );
+
+        p.boardChanged( board );
+    }
+
+    @Test
+    public void does_not_recognise_a_draw_when_board_is_not_full() {
+        final PlayGameView view = mockery.mock( PlayGameView.class );
+        final Board board = mockery.mock( Board.class );
+        final BoardIterator boardIterator = mockery.mock( BoardIterator.class );
+        mockery.checking( new Expectations() {{
+            allowing( board ).whoHasWon();
+            will( returnValue( Board.Piece.None ) );
+            allowing( board ).iterator();
+            will( returnValue( boardIterator) );
+            ignoring( board );
+            allowing( boardIterator ).hasNext();
+            will( onConsecutiveCalls(
+                  returnValue( true ),
+                  returnValue( true ),
+                  returnValue( true ),
+                  returnValue( false ) ) );
+            allowing( boardIterator ).piece();
+            will( returnValue( Board.Piece.None ) );
+            ignoring( boardIterator );
+            never( view ).gameDrawn();
+            ignoring( view );
+        }});
+        PlayGamePresenter p = new PlayGamePresenter( board, view );
+
+        p.boardChanged( board );
+    }
 }
 

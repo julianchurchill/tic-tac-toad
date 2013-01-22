@@ -135,5 +135,22 @@ public class PlayGamePresenterTests {
 
         p.boardChanged( board );
     }
+
+    @Test
+    public void locks_board_when_game_won() {
+        final PlayGameView view = mockery.mock( PlayGameView.class );
+        final Board board = mockery.mock( Board.class );
+        final BoardIterator boardIterator = mockery.mock( BoardIterator.class );
+        mockery.checking( new Expectations() {{
+            allowing( board ).whoHasWon();
+            will( returnValue( Board.Piece.Nought ) );
+            oneOf( board ).lock();
+            ignoring( board );
+            ignoring( view );
+        }});
+        PlayGamePresenter p = new PlayGamePresenter( board, view );
+
+        p.boardChanged( board );
+    }
 }
 

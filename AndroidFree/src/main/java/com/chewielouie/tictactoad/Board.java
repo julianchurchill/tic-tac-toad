@@ -10,4 +10,6 @@ public interface Board {
     public BoardIterator iterator();
     public void addListener( BoardListener l );
     public Piece whoHasWon();
+    public void lock();
+    public void unlock();
 }

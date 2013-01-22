@@ -10,6 +10,7 @@ public class NormalBoard implements Board {
     private Board.Piece piece = Board.Piece.None;
     private Board.Piece[][] pieces;
     private List<BoardListener> listeners = new ArrayList<BoardListener>();
+    private boolean locked = false;
 
     public NormalBoard() {
         pieces = new Board.Piece[WIDTH][HEIGHT];
@@ -31,6 +32,8 @@ public class NormalBoard implements Board {
     }
 
     public void setContentAt( Coord c, Board.Piece p ) {
+        if( locked )
+            return;
         pieces[c.x()][c.y()] = p;
         for( BoardListener l : listeners )
             l.boardChanged( this );
@@ -137,5 +140,13 @@ public class NormalBoard implements Board {
                     return false;
             return true;
         }
+    }
+
+    public void lock() {
+        locked = true;
+    }
+
+    public void unlock() {
+        locked = false;
     }
 }

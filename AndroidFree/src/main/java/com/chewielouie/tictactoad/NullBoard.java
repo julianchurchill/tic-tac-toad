@@ -33,5 +33,11 @@ public class NullBoard implements Board {
     public Piece whoHasWon() {
         return Piece.None;
     }
+
+    public void lock() {
+    }
+
+    public void unlock() {
+    }
 }
 

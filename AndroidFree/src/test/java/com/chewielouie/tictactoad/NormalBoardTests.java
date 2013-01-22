@@ -230,5 +230,28 @@ public class NormalBoardTests extends BoardContract {
         board.setContentAt( new Coord( 1, 0 ), Board.Piece.Nought );
         assertEquals( Board.Piece.None, board.whoHasWon() );
     }
+
+    @Test
+    public void locking_the_board_stops_content_being_added() {
+        final NormalBoard board = new NormalBoard();
+
+        board.lock();
+        board.setContentAt( new Coord( 1, 0 ), Board.Piece.Nought );
+
+        assertEquals( Board.Piece.None,
+                      board.getContentAt( new Coord( 1, 0 ) ) );
+    }
+
+    @Test
+    public void unlocking_the_board_allows_content_to_be_added_again() {
+        final NormalBoard board = new NormalBoard();
+
+        board.lock();
+        board.unlock();
+        board.setContentAt( new Coord( 1, 0 ), Board.Piece.Nought );
+
+        assertEquals( Board.Piece.Nought,
+                      board.getContentAt( new Coord( 1, 0 ) ) );
+    }
 }
 

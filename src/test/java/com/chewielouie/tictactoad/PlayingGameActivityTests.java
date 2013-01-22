@@ -165,5 +165,38 @@ public class PlayingGameActivityTests
 
         mockery.assertIsSatisfied();
     }
+
+    @Test
+    public void sets_user_message_when_game_is_drawn() {
+        PlayingGameActivity p = new PlayingGameActivity();
+        p.onCreate( null );
+
+        p.gameDrawn();
+
+        final TextView t = (TextView)p.findViewById( R.id.turn_prompt );
+        assertEquals( "Game drawn!", t.getText().toString() );
+    }
+
+    @Test
+    public void sets_user_message_when_game_is_won_by_noughts() {
+        PlayingGameActivity p = new PlayingGameActivity();
+        p.onCreate( null );
+
+        p.gameWonBy( Board.Piece.Nought );
+
+        final TextView t = (TextView)p.findViewById( R.id.turn_prompt );
+        assertEquals( "Game won by Green!", t.getText().toString() );
+    }
+
+    @Test
+    public void sets_user_message_when_game_is_won_by_crosses() {
+        PlayingGameActivity p = new PlayingGameActivity();
+        p.onCreate( null );
+
+        p.gameWonBy( Board.Piece.Cross );
+
+        final TextView t = (TextView)p.findViewById( R.id.turn_prompt );
+        assertEquals( "Game won by Brown!", t.getText().toString() );
+    }
 }
 

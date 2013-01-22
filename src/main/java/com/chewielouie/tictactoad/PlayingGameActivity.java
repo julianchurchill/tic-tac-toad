@@ -7,6 +7,7 @@ import com.chewielouie.tictactoad.PlayGameView;
 import com.chewielouie.tictactoad.RendersView;
 import java.lang.IllegalArgumentException;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class PlayingGameActivity extends Activity implements PlayGameView, BoardTouchListener
 {
@@ -82,9 +83,16 @@ public class PlayingGameActivity extends Activity implements PlayGameView, Board
     }
 
     public void gameWonBy( Board.Piece p ) {
+        TextView v = (TextView)findViewById( R.id.turn_prompt );
+        if( p == Board.Piece.Nought )
+            v.setText( "Game won by Green!" );
+        else if( p == Board.Piece.Cross )
+            v.setText( "Game won by Brown!" );
     }
 
     public void gameDrawn() {
+        TextView v = (TextView)findViewById( R.id.turn_prompt );
+        v.setText( "Game drawn!" );
     }
 }
 

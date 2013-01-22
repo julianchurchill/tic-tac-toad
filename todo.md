@@ -7,8 +7,6 @@ Backlog
 =======
 
 - Detect completed board and end the game:
-  - Declare who won:
-    - View must show to user win or draw message, change 'Your turn' to 'Green won!' or 'Brown won!'
   - Stop any further pieces being placed:
     - When presenter detects win/draw lock the board
     - Board must ignore content setting when locked

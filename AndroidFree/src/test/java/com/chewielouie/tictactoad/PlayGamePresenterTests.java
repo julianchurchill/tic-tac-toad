@@ -140,7 +140,6 @@ public class PlayGamePresenterTests {
     public void locks_board_when_game_won() {
         final PlayGameView view = mockery.mock( PlayGameView.class );
         final Board board = mockery.mock( Board.class );
-        final BoardIterator boardIterator = mockery.mock( BoardIterator.class );
         mockery.checking( new Expectations() {{
             allowing( board ).whoHasWon();
             will( returnValue( Board.Piece.Nought ) );
@@ -151,6 +150,34 @@ public class PlayGamePresenterTests {
         PlayGamePresenter p = new PlayGamePresenter( board, view );
 
         p.boardChanged( board );
+    }
+
+    @Test
+    public void clears_board_on_new_game() {
+        final PlayGameView view = mockery.mock( PlayGameView.class );
+        final Board board = mockery.mock( Board.class );
+        mockery.checking( new Expectations() {{
+            oneOf( board ).clear();
+            ignoring( board );
+            ignoring( view );
+        }});
+        PlayGamePresenter p = new PlayGamePresenter( board, view );
+
+        p.newGame();
+    }
+
+    @Test
+    public void unlocks_board_on_new_game() {
+        final PlayGameView view = mockery.mock( PlayGameView.class );
+        final Board board = mockery.mock( Board.class );
+        mockery.checking( new Expectations() {{
+            oneOf( board ).unlock();
+            ignoring( board );
+            ignoring( view );
+        }});
+        PlayGamePresenter p = new PlayGamePresenter( board, view );
+
+        p.newGame();
     }
 }
 

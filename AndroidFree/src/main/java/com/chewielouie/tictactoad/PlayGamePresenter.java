@@ -32,4 +32,9 @@ class PlayGamePresenter implements RendersView, BoardListener {
                 return false;
         return true;
     }
+
+    public void newGame() {
+        board.unlock();
+        board.clear();
+    }
 }

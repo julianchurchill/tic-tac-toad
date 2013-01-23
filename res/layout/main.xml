@@ -4,6 +4,12 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#000000">
+<Button
+    android:id="@+id/new_game_button"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="New game"
+    />
 <TextView
     android:id="@+id/turn_prompt"
     android:layout_width="fill_parent"
@@ -14,11 +20,5 @@
     android:id="@+id/graphical_board"
     android:layout_height="fill_parent"
     android:layout_width="fill_parent"/>
-<Button
-    android:id="@+id/new_game_button"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text="New game"
-    />
 </LinearLayout>
 

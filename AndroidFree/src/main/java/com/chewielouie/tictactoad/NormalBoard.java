@@ -14,9 +14,7 @@ public class NormalBoard implements Board {
 
     public NormalBoard() {
         pieces = new Board.Piece[WIDTH][HEIGHT];
-        for( int x = 0; x < WIDTH; ++x )
-            for( int y = 0; y < HEIGHT; ++y )
-                pieces[x][y] = Board.Piece.None;
+        clear();
     }
 
     public BoardIterator iterator() {
@@ -148,5 +146,11 @@ public class NormalBoard implements Board {
 
     public void unlock() {
         locked = false;
+    }
+
+    public void clear() {
+        for( int x = 0; x < WIDTH; ++x )
+            for( int y = 0; y < HEIGHT; ++y )
+                pieces[x][y] = Board.Piece.None;
     }
 }

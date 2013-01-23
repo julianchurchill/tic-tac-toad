@@ -12,4 +12,5 @@ public interface Board {
     public Piece whoHasWon();
     public void lock();
     public void unlock();
+    public void clear();
 }

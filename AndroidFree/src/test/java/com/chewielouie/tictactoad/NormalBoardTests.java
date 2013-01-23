@@ -253,5 +253,19 @@ public class NormalBoardTests extends BoardContract {
         assertEquals( Board.Piece.Nought,
                       board.getContentAt( new Coord( 1, 0 ) ) );
     }
+
+    @Test
+    public void clearing_the_board_empties_it() {
+        final NormalBoard board = new NormalBoard();
+        board.setContentAt( new Coord( 0, 1 ), Board.Piece.Nought );
+        board.setContentAt( new Coord( 1, 0 ), Board.Piece.Cross );
+        board.setContentAt( new Coord( 2, 1 ), Board.Piece.Nought );
+
+        board.clear();
+
+        BoardIterator iterator = board.iterator();
+        for( ; iterator.hasNext(); iterator.next() )
+            assertEquals( Board.Piece.None, iterator.piece() );
+    }
 }
 

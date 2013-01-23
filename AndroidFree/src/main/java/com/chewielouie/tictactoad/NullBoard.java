@@ -39,5 +39,8 @@ public class NullBoard implements Board {
 
     public void unlock() {
     }
+
+    public void clear() {
+    }
 }
 

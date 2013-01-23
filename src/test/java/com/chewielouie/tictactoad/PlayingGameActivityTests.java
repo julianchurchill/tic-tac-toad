@@ -6,6 +6,7 @@ import com.chewielouie.tictactoad.Board;
 import com.chewielouie.tictactoad.ProgrammerMistake;
 import com.chewielouie.tictactoad.PlayGameViewContract;
 import com.chewielouie.tictactoad.RendersView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
@@ -197,6 +198,59 @@ public class PlayingGameActivityTests
 
         final TextView t = (TextView)p.findViewById( R.id.turn_prompt );
         assertEquals( "Game won by Brown!", t.getText().toString() );
+    }
+
+    @Test
+    public void pressing_new_game_button_calls_presenter_to_start_new_game() {
+        final RendersView rendersView = mockery.mock( RendersView.class );
+        final Board board = mockery.mock( Board.class );
+        mockery.checking( new Expectations() {{
+            oneOf( rendersView ).newGame();
+            ignoring( board );
+        }});
+        PlayingGameActivity p = new PlayingGameActivity( rendersView, board );
+        p.onCreate( null );
+
+        final Button b = (Button)p.findViewById( R.id.new_game_button );
+        b.performClick();
+
+        mockery.assertIsSatisfied();
+    }
+
+    @Test
+    public void new_game_button_text_is_correct() {
+        PlayingGameActivity p = new PlayingGameActivity();
+        p.onCreate( null );
+
+        final Button b = (Button)p.findViewById( R.id.new_game_button );
+        assertEquals( "New game", b.getText().toString() );
+    }
+
+    @Test
+    public void should_reset_turn_to_noughts_on_new_game() {
+        final RendersView rendersView = mockery.mock( RendersView.class );
+        final Board board = mockery.mock( Board.class );
+        final Sequence pieceAlternation = mockery.sequence( "piece alternation" );
+        mockery.checking( new Expectations() {{
+            allowing( board ).getContentAt( with( any( Coord.class )));
+            will( returnValue( Board.Piece.None ) );
+            oneOf( board ).setContentAt( with( any( Coord.class ) ),
+                                         with( equal( Board.Piece.Nought ) ) );
+            inSequence( pieceAlternation );
+            oneOf( board ).setContentAt( with( any( Coord.class ) ),
+                                         with( equal( Board.Piece.Nought ) ) );
+            inSequence( pieceAlternation );
+            ignoring( rendersView );
+        }});
+        PlayingGameActivity p = new PlayingGameActivity( rendersView, board );
+        p.onCreate( null );
+        p.boardTouchEvent( new Coord( 0, 0 ) );
+
+        final Button b = (Button)p.findViewById( R.id.new_game_button );
+        b.performClick();
+        p.boardTouchEvent( new Coord( 0, 0 ) );
+
+        mockery.assertIsSatisfied();
     }
 }
 

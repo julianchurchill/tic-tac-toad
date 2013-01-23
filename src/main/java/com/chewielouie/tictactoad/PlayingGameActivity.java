@@ -6,6 +6,9 @@ import com.chewielouie.tictactoad.NormalBoard;
 import com.chewielouie.tictactoad.PlayGameView;
 import com.chewielouie.tictactoad.RendersView;
 import java.lang.IllegalArgumentException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,13 +48,32 @@ public class PlayingGameActivity extends Activity implements PlayGameView, Board
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        setupBoardTouchGenerator();
+        setupGraphicalBoardView();
+        setupNewGameButton();
+    }
+
+    private void setupBoardTouchGenerator() {
         if( boardTouchGenerator == null )
             boardTouchGenerator =
                 (BoardTouchGenerator)findViewById( R.id.graphical_board );
         boardTouchGenerator.addListener( this );
+    }
+
+    private void setupGraphicalBoardView() {
         if( graphicalBoardView == null )
             graphicalBoardView =
                 (GraphicalBoardView)findViewById( R.id.graphical_board );
+    }
+
+    private void setupNewGameButton() {
+        final Button b = (Button)findViewById( R.id.new_game_button );
+        b.setOnClickListener( new OnClickListener() {
+            public void onClick( View v ) {
+                nextPieceToPlay = Board.Piece.Nought;
+                rendersView.newGame();
+            }
+        });
     }
 
     @Override

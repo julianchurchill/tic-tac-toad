@@ -6,9 +6,7 @@ TODO
 Backlog
 =======
 
-- Detect completed board and end the game:
-  - Ask if a new game should be started:
-    - View should show 'New game' button which calls presenter.newGame() when clicked and resets who plays next, always start with noughts.
+- RendersView interface now has a 'newGame()' method. Is the name of this interface right? (it also has a 'render()' method)
 
 - Human vs random computer
 - Human vs medium computer

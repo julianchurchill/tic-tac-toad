@@ -33,6 +33,10 @@ public class NormalBoard implements Board {
         if( locked )
             return;
         pieces[c.x()][c.y()] = p;
+        notifyListenersOfChange();
+    }
+
+    private void notifyListenersOfChange() {
         for( BoardListener l : listeners )
             l.boardChanged( this );
     }
@@ -152,5 +156,6 @@ public class NormalBoard implements Board {
         for( int x = 0; x < WIDTH; ++x )
             for( int y = 0; y < HEIGHT; ++y )
                 pieces[x][y] = Board.Piece.None;
+        notifyListenersOfChange();
     }
 }

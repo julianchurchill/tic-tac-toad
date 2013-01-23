@@ -267,5 +267,17 @@ public class NormalBoardTests extends BoardContract {
         for( ; iterator.hasNext(); iterator.next() )
             assertEquals( Board.Piece.None, iterator.piece() );
     }
+
+    @Test
+    public void should_notify_listeners_on_clear() {
+        final NormalBoard board = new NormalBoard();
+        final BoardListener listener = mockery.mock( BoardListener.class );
+        board.addListener( listener );
+        mockery.checking( new Expectations() {{
+            oneOf( listener ).boardChanged( with( board ) );
+        }});
+
+        board.clear();
+    }
 }
 

@@ -21,9 +21,7 @@ public class PlayingGameActivity extends Activity implements PlayGameView, Board
     private GraphicalBoardView graphicalBoardView = null;
 
     public PlayingGameActivity() {
-        board = new NormalBoard();
-        board.setContentAt( new Coord( 1, 0 ), Board.Piece.Nought );
-        board.setContentAt( new Coord( 2, 0 ), Board.Piece.Cross );
+        this.board = new NormalBoard();
         this.rendersView = new PlayGamePresenter( board, this );
     }
 
